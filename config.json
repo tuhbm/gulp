@@ -1,19 +1,20 @@
 {
-    "lint"        : true,
-    "concat"      : true,
-    "uglify"      : true,
-    "rename"      : true,
+    "lint"    : true,
+    "concat"  : true,
+    "uglify"  : true,
+    "rename"  : true,
     
-    "path"        : {
-        "css"     :{
-            "src":["src/css/*.css"],
-            dest:"dist/css",
-            "filename":"common.css"
-        },
+    "path" : {
         "js":{
-            "src":["src/*.js"],
+            "src": ["src/**/*.js"],
             "dest":"dist/js",
             "filename":"common.js"
+        },
+        "css":{
+            "src":["src/**/*.css"],
+            "dest":"dist/css",
+            "filename":"common.css"
         }    
     }
+    
 }

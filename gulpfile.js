@@ -1,70 +1,115 @@
-var gulp        = require('gulp'), //gulp 모듈
+var gulp        = require('gulp'), // gulp 모듈
     csslint     = require('gulp-csslint'),
     concatcss   = require('gulp-concat-css'),
     uglifycss   = require('gulp-uglifycss'),
-    jshint      = require('gulp-jshint'),
-    uglify      = require('gulp-uglify'),
-    concat      = require('gulp-concat'),
     rename      = require('gulp-rename'),
+    jshint      = require('gulp-jshint'),
+    concat      = require('gulp-concat'),
+    uglify      = require('gulp-uglify'),
     gulpif      = require('gulp-if'),
     del         = require('del'),
     config      = require('./config.json');
 
 
+// gulp.task()를 사용해 기본 디폴트 데스크 정의
+gulp.task('default',['clean','styles','scripts']);
+
+gulp.task('watch',['clean'],function(){
+   gulp.watch(config.path.css.src, ['styles']);
+   gulp.watch(config.path.js.src, ['scripts']);
+});
 
 gulp.task('clean',function(){
-    del(['src/*'])
+   del(['dist/*']) 
 });
 
-
-
+// style
 gulp.task('styles',function(){
-   gulp.src(config.path.css.src) 
-       .pipe(gulpif(config.lint, csslint({'import':false})))                       //css 문법검사
-       .pipe(gulpif(config.concat, concatcss(path.css.filename)))    //css 파일병함
-       .pipe(gulpif(config.rename, gulp.dest(path.css.dest)))
-       .pipe(gulpif(config.uglify, uglifycss()))                     //css 압축
-       .pipe(gulpif(config.rename, rename({suffix:'.min'})))
-       .pipe(gulp.dest(path.css.dest));
+    gulp.src(config.path.css.src)
+        .pipe(gulpif(config.lint, csslint({'import':false})) )             //css 파일을 검사
+        .pipe(gulpif(config.concat, concatcss(config.path.css.filename)) )  //css 파일을 병합
+        .pipe(gulpif(config.rename, gulp.dest(config.path.css.dest)) )
+        .pipe(gulpif(config.uglify ,uglifycss({              //css 파일을 한줄정리
+            mangle: false,
+            preserveComments : 'all'
+        })) )
+        .pipe(gulpif(config.rename, rename({suffix:'.min'})) )
+        .pipe(gulp.dest( config.path.css.dest ));      //css 파일을 저장
+    
 });
+
 gulp.task('scripts',function(){
     gulp.src(config.path.js.src)
-        .pipe(gulpif(config.lint,jshint()))
-        .pipe(gulpif(config.lint,jshint.reporter('jshint-stylish')))
-        .pipe(gulpif(config.concat,concat(config.path.js.filename)))
-        .pipe(gulpif(config.rename,gulp.dest(config.path.js.dest)))
-        .pipe(gulpif(config.uglify, uglify({mangle : false, preserveComments : 'all'})))
-        .pipe(gulpif(config.rename, rename({suffix:'.min'})))
-        .pipe(gulp.dest(config.path.js.dest));
-})
+        .pipe(gulpif(config.lint, jshint()) )             //javascript 파일을 검사
+        .pipe(gulpif(config.lint, jshint.reporter('jshint-stylish')) )
+        .pipe(gulpif(config.concat, concat(config.path.js.filename)) )  //javascript 파일을 병합
+        .pipe(gulpif(config.rename, gulp.dest(config.path.js.dest)) )
+        .pipe(gulpif(config.uglify, uglify({              //javascript 파일을 한줄정리
+            mangle: false,
+            preserveComments : 'all'
+        })) )
+        .pipe(gulpif(config.rename, rename({suffix:'.min'})) )
+        .pipe(gulp.dest(config.path.js.dest));      //javascript 파일을 저장
+});
+/*
+// script
+gulp.task('scripts',['js:hint','js:concat','js:uglify']);
 
-
-//gulp.task('scripts',['js:hint','js:concat','js:uglify']);
-
-// JS 문법검사
 gulp.task('js:hint',function(){
     gulp.src(config.path.js.src)
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint())             //javascript 파일을 검사
+        .pipe(jshint.reporter('jshint-stylish'))
 });
-// JS 병합
 gulp.task('js:concat',function(){
     gulp.src(config.path.js.src)
-        .pipe(concat(config.path.js.filename))
-        .pipe(gulp.dest(config.path.js.dest));
+        .pipe(concat(path.js.filename))  //javascript 파일을 병합
+        .pipe(gulp.dest(config.path.js.dest))
 });
-// JS 압축
 gulp.task('js:uglify',function(){
-    gulp.src(config.path.js.dest+'/' + path.js.filename)
-        .pipe(gulpif(config.concat, uglify({mangle : false, preserveComments : 'all'})))
-        .pipe(gulpif(config.uglify, rename({suffix:'.min'})))
-        .pipe(gulp.dest(path.js.dest));
+    gulp.src(path.js.dest +'/'+ path.js.filename)
+        .pipe(gulpif(config.concat, uglify({              //javascript 파일을 한줄정리
+            mangle: false,
+            preserveComments : 'all'
+        })) )
+        .pipe(rename({suffix:'.min'}))
+        .pipe(gulp.dest(path.js.dest));      //javascript 파일을 저장
 });
 
-gulp.task('watch',function(){
-    gulp.watch(config.path.css.src,['styles']);
-    gulp.watch(config.path.js.src,['scripts']);
-})
-gulp.task('default',function(){
-   console.log('gulp default 일이 수행되었습니다');
+*/
+/*
+gulp.task('css:lint',function(){
+    gulp.src(path.css.src)
+        .pipe(csslint({'import':false}))             //css 파일을 검사
+        //.pipe(csslint.reporter())
 });
+gulp.task('css:concat',function(){
+    gulp.src(path.css.src)
+        .pipe(concatcss(path.css.filename))  //css 파일을 병합
+        .pipe(gulp.dest(path.css.dest))
+});
+gulp.task('css:uglify',function(){
+    gulp.src(path.css.dest +'/'+ path.css.filename)
+        .pipe(uglifycss({              //css 파일을 한줄정리
+            mangle: false,
+            preserveComments : 'all'
+        }))
+        .pipe(rename({suffix:'.min'}))
+        .pipe(gulp.dest(path.css.dest));      //css 파일을 저장
+});
+*/
+/*
+gulp.task('scripts',function(){
+   gulp
+        //.src('./src/*.js')
+        .pipe(jshint())             //javascript 파일을 검사
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(concat('common.js'))  //javascript 파일을 한줄정리
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(uglify({              //javascript 파일을 병합
+            mangle: false,
+            preserveComments : 'all'
+        }))
+        .pipe(rename({suffix:'.min'}))
+        .pipe(gulp.dest('./dist/js'));      //javascript 파일을 저장
+});
+*/
