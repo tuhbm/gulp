@@ -1,0 +1,58 @@
+body{
+    margin:0;
+    padding:0;
+    
+    h1,h2,h3,h4,h5,h6{
+        margin:0;
+        padding:0;
+    }
+    a{
+        padding:0;
+        margin:0;
+    }
+    p{
+        font-size:12px;
+    }
+}
+#wrap{
+    position:relative;
+    width:1024px;
+    margin:0 auto;
+    
+    #header{
+        overflow:hidden;
+        position:relative
+        
+        .tit_logo{
+            float:left;
+            font-size:24px;
+            width:200px;
+            height:100px;
+        }
+        .user_util{
+            float:right;
+        }
+    }
+    #container{
+        .content{
+            width:1024px;
+            position:relative;
+            
+            .visual{
+                overflow:hidden;
+                
+                ul{
+                    margin-left:-200px;
+                    li{
+                        float:left;
+                        width:200px;
+                    }
+                    a{
+                        display:block;
+                    }
+                }
+            }
+        }
+    }
+    
+}
