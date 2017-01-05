@@ -1,0 +1,48 @@
+/* line 1, src/scss/style.scss */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* line 5, src/scss/style.scss */
+body h1, body h2, body h3, body h4, body h5, body h6 {
+	margin: 0;
+	padding: 0;
+}
+
+/* line 9, src/scss/style.scss */
+body a {
+	padding: 0;
+	margin: 0;
+}
+
+/* line 13, src/scss/style.scss */
+body p {
+	font-size: 12px;
+}
+
+/* line 17, src/scss/style.scss */
+#wrap {
+	position: relative;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+/* line 22, src/scss/style.scss */
+#wrap #header {
+	overflow: hidden;
+}
+
+/* line 24, src/scss/style.scss */
+#wrap #header position:relative
+.tit_logo {
+	float: left;
+	font-size: 24px;
+	width: 200px;
+	height: 100px;
+}
+
+/* line 32, src/scss/style.scss */
+#wrap #header .user_util {
+	float: right;
+}
