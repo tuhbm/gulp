@@ -32,6 +32,9 @@ var path ={
         src:'src/css/*.css',
         dest:'dist/css',
         filename:'default.css'
+        src:'src/**/*.css',
+        dest:'dist/css',
+        filename:'common.css'
     },
     sass:{
         src:'src/**/*.scss'
@@ -85,6 +88,7 @@ gulp.task('sprite', function(){
     var spriteData = gulp.src('images/*.png')
     .pipe(spritesmith({
         imgName: 'sprite.png',
+<<<<<<< HEAD
         padding: 20,
         algorithm: 'binary-tree',//top-down , binary-tree , left-right
         cssName: 'sprite.css'
@@ -121,6 +125,16 @@ gulp.task('sprite', function(){
 //         .pipe(gulpif('*.css', gulp.dest('./dist/css/')));
 // });
 
+=======
+        padding: 10,
+        algorithm: 'top-down',
+        cssName: 'sprite.css'
+    }));
+    spriteData.img.pipe(gulp.dest('images'));
+    spriteData.css.pipe(gulp.dest('dist/css'));
+});
+
+>>>>>>> bc69c7f072cadec2053ff3b35f83bdbceb2104e2
 // sass
 gulp.task('sass', function (){ 
     return gulp.src('src/scss/**/*.scss') 

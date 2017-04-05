@@ -1,1 +1,118 @@
+<<<<<<< HEAD
 .icon-back,.icon-bg-black,.icon-bg-hover{background-image:url(sprite.png);background-position:0 -182px;width:43px;height:43px}.icon-bg-black,.icon-bg-hover{background-position:0 0;width:100px;height:100px}.icon-bg-hover{background-position:-158px -182px;width:1px;height:34px}.icon-button-tray-down,.icon-button-tray-up,.icon-forward,.icon-nav-bg{background-image:url(sprite.png);background-position:-120px -53px;width:54px;height:42px}.icon-button-tray-up,.icon-forward,.icon-nav-bg{background-position:-194px -53px}.icon-forward,.icon-nav-bg{background-position:-63px -182px;width:43px;height:43px}.icon-nav-bg{background-position:0 -245px;width:1px;height:44px}.icon-nav-dot,.icon-pause,.icon-play{background-image:url(sprite.png);background-position:-126px -182px;width:12px;height:36px}.icon-pause,.icon-play{background-position:0 -120px;width:54px;height:42px}.icon-play{background-position:-74px -120px}.icon-progress-back,.icon-progress-bar,.icon-supersized-logo{background-image:url(sprite.png);background-position:-196px -120px;width:1px;height:8px}.icon-progress-bar,.icon-supersized-logo{background-position:-217px -120px}.icon-supersized-logo{background-position:-120px 0;width:188px;height:33px}.icon-thumb-back,.icon-thumb-forward{background-image:url(sprite.png);background-position:-268px -53px;width:28px;height:28px}.icon-thumb-forward{background-position:-148px -120px}
+=======
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-back {
+  background-image: url(sprite.png);
+  background-position: 0px -506px;
+  width: 43px;
+  height: 43px;
+}
+.icon-bg-black {
+  background-image: url(sprite.png);
+  background-position: 0px -613px;
+  width: 100px;
+  height: 100px;
+}
+.icon-bg-hover {
+  background-image: url(sprite.png);
+  background-position: 0px -155px;
+  width: 1px;
+  height: 34px;
+}
+.icon-button-tray-down {
+  background-image: url(sprite.png);
+  background-position: 0px -401px;
+  width: 54px;
+  height: 42px;
+}
+.icon-button-tray-up {
+  background-image: url(sprite.png);
+  background-position: 0px -245px;
+  width: 54px;
+  height: 42px;
+}
+.icon-forward {
+  background-image: url(sprite.png);
+  background-position: 0px -453px;
+  width: 43px;
+  height: 43px;
+}
+.icon-nav-bg {
+  background-image: url(sprite.png);
+  background-position: 0px -559px;
+  width: 1px;
+  height: 44px;
+}
+.icon-nav-dot {
+  background-image: url(sprite.png);
+  background-position: 0px -199px;
+  width: 12px;
+  height: 36px;
+}
+.icon-pause {
+  background-image: url(sprite.png);
+  background-position: 0px -297px;
+  width: 54px;
+  height: 42px;
+}
+.icon-play {
+  background-image: url(sprite.png);
+  background-position: 0px -349px;
+  width: 54px;
+  height: 42px;
+}
+.icon-progress-back {
+  background-image: url(sprite.png);
+  background-position: 0px -18px;
+  width: 1px;
+  height: 8px;
+}
+.icon-progress-bar {
+  background-image: url(sprite.png);
+  background-position: 0px 0px;
+  width: 1px;
+  height: 8px;
+}
+.icon-sprite {
+  background-image: url(sprite.png);
+  background-position: 0px -723px;
+  width: 298px;
+  height: 259px;
+}
+.icon-supersized-logo {
+  background-image: url(sprite.png);
+  background-position: 0px -112px;
+  width: 188px;
+  height: 33px;
+}
+.icon-thumb-back {
+  background-image: url(sprite.png);
+  background-position: 0px -74px;
+  width: 28px;
+  height: 28px;
+}
+.icon-thumb-forward {
+  background-image: url(sprite.png);
+  background-position: 0px -36px;
+  width: 28px;
+  height: 28px;
+}
+>>>>>>> bc69c7f072cadec2053ff3b35f83bdbceb2104e2
