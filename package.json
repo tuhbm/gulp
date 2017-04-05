@@ -1,0 +1,45 @@
+{
+  "name": "taekyun",
+  "version": "1.0.0",
+  "description": "gulp.js 이해를 돕기위한 책 예제",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-csslint": "^1.0.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-uglifycss": "^1.0.6",
+    "gulp.spritesmith": "^6.2.1",
+    "jshint": "^2.9.4",
+    "merge-stream": "^1.0.1",
+    "vinyl-buffer": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "taeykun",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuhbm/gulp_test.git"
+  },
+  "keywords": [
+    "gulp",
+    "test"
+  ],
+  "bugs": {
+    "url": "https://github.com/tuhbm/gulp_test/issues"
+  },
+  "homepage": "https://github.com/tuhbm/gulp_test#readme"
+}
