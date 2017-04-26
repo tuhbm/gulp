@@ -81,4 +81,24 @@ body p {
 	font-size: 0;
 	line-height: 0;
 	padding: 0;
+	border-radius: 50%;
+}
+
+/* line 61, src/scss/style.scss */
+#wrap #container .content .visual ul a span i {
+	display: flex;
+}
+
+/* line 65, src/scss/style.scss */
+#wrap #container .content .visual ul a span span {
+	user-select: none;
+	display: flex;
+	border: 1px solid #000;
+}
+
+/* line 72, src/scss/style.scss */
+#wrap #container .content .visual ul a div {
+	display: flex;
+	border-radius: 50%;
+	background-color: #fff;
 }

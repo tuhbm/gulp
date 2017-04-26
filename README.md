@@ -16,4 +16,5 @@
 13. gulp-csso
 14. gulp-imagemin
 15. merge-stream
-
+16. gulp-sourcemaps
+17. gulp-autoprefixer

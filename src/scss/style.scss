@@ -56,6 +56,23 @@ body{
                             font-size:0;
                             line-height:0;
                             padding:0;
+                            border-radius:50%;
+
+                            i{
+                                display:flex;
+                            }
+
+                            span{
+                                user-select: none;
+                                display:flex;
+                                border:1px solid #000;
+                            }
+                        }
+
+                        div{
+                            display:flex;
+                            border-radius:50%;
+                            background-color:#fff;
                         }
                     }
                 }

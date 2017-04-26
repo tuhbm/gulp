@@ -1,19 +1,21 @@
-var gulp        = require('gulp'), // gulp 모듈
-    spritesmith = require('gulp.spritesmith'),
-    sass        = require('gulp-sass'),
-    csslint     = require('gulp-csslint'),
-    concatcss   = require('gulp-concat-css'),
-    uglifycss   = require('gulp-uglifycss'),
-    rename      = require('gulp-rename'),
-    jshint      = require('gulp-jshint'),
-    concat      = require('gulp-concat'),
-    uglify      = require('gulp-uglify'),
-    gulpif      = require('gulp-if'),
-    del         = require('del'),
-    csso = require('gulp-csso'),
-    buffer = require('vinyl-buffer'),
-    imagemin = require('gulp-imagemin'),
-    merge = require('merge-stream');
+var gulp        = require('gulp'); // gulp 모듈
+var spritesmith = require('gulp.spritesmith');
+var sourcemaps  = require('gulp-sourcemaps');
+var autoprefixer= require('gulp-autoprefixer');
+var sass        = require('gulp-sass');
+var csslint     = require('gulp-csslint');
+var concatcss   = require('gulp-concat-css');
+var uglifycss   = require('gulp-uglifycss');
+var rename      = require('gulp-rename');
+var jshint      = require('gulp-jshint');
+var concat      = require('gulp-concat');
+var uglify      = require('gulp-uglify');
+var gulpif      = require('gulp-if');
+var del         = require('del');
+var csso = require('gulp-csso');
+var buffer = require('vinyl-buffer');
+var imagemin = require('gulp-imagemin');
+var merge = require('merge-stream');
 
 var config = {
     lint    : true,
@@ -43,8 +45,8 @@ var path ={
 gulp.task('default',['sprite','sass','styles','scripts']);
 
 gulp.task('watch',function(){
-    gulp.watch(path.sass.src, ['sass']);
-    gulp.watch(path.css.src, ['styles']);
+    gulp.watch(path.sass.src, ['sass']),
+    gulp.watch(path.css.src, ['styles']),
     gulp.watch(path.js.src, ['scripts']);
 });
 
@@ -107,7 +109,7 @@ gulp.task('sprite', function(){
 gulp.task('sass', function (){ 
     return gulp.src('src/scss/**/*.scss') 
         .pipe(sass(scssOptions).on('error', sass.logError)) 
-        .pipe(gulp.dest('src/css/modules')); 
+        .pipe(gulp.dest('src/css/modules'));
 });
 
 // style
@@ -115,6 +117,8 @@ gulp.task('styles',function(){
     gulp.src(path.css.src)
         .pipe(gulpif(config.lint, csslint({'import':false})) )             //css 파일을 검사
         .pipe(gulpif(config.concat, concatcss(path.css.filename)) )  //css 파일을 병합
+        .pipe(sourcemaps.init())
+        .pipe(autoprefixer())
         .pipe(gulpif(config.rename, gulp.dest(path.css.dest)) )
         .pipe(gulpif(config.uglify ,uglifycss()) )
         .pipe(gulpif(config.rename, rename({suffix:'.min'})) )
