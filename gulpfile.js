@@ -9,11 +9,11 @@ var gulp        = require('gulp'), // gulp 모듈
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
     gulpif      = require('gulp-if'),
-    del         = require('del');
-var buffer = require('vinyl-buffer');
-var csso = require('gulp-csso');
-var imagemin = require('gulp-imagemin');
-var merge = require('merge-stream');
+    del         = require('del'),
+    csso = require('gulp-csso'),
+    buffer = require('vinyl-buffer'),
+    imagemin = require('gulp-imagemin'),
+    merge = require('merge-stream');
 
 var config = {
     lint    : true,
@@ -79,47 +79,29 @@ var scssOptions = {
         * 컴파일 된 CSS 에 원본소스의 위치와 줄수 주석표시. 
         */ 
         sourceComments: true 
-}; 
-// image sprite
+};
+// image spritesmith
 gulp.task('sprite', function(){
-    var spriteData = gulp.src('images/*.png')
+    var spriteData = gulp.src('images/pc/btn'+'*.png')
     .pipe(spritesmith({
-        imgName: 'sprite.png',
+        imgName: 'btn-sprite.png',
         padding: 20,
         algorithm: 'binary-tree',//top-down , binary-tree , left-right
-        cssName: 'sprite.css'
+        cssName: 'btn-sprite.css'
     }));
-    // Pipe image stream through image optimizer and onto disk
+
     var imgStream = spriteData.img
-    // DEV: We must buffer our stream into a Buffer for `imagemin`
         .pipe(buffer())
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
 
-    // Pipe CSS stream through CSS optimizer and onto disk
     var cssStream = spriteData.css
         .pipe(csso())
         .pipe(gulp.dest('dist/css'));
 
-    // Return a merged stream to handle both `end` events
     return merge(imgStream, cssStream);
-    // spriteData.img.pipe(gulp.dest('dist/img'));
-    // spriteData.css.pipe(gulp.dest('dist/css'));
+
 });
-
-// image spritesmith
-
-
-// gulp.task('sprites', function () {
-//     return  gulp.src('./images/*.png')
-//         .pipe(spritesmith({
-//             imgName: 'sprite.png',
-//             styleName: 'sprite.css',
-//             imgPath: '../img/sprite.png'
-//         }))
-//         .pipe(gulpif('*.png', gulp.dest('./dist/img/')))
-//         .pipe(gulpif('*.css', gulp.dest('./dist/css/')));
-// });
 
 // sass
 gulp.task('sass', function (){ 
@@ -163,41 +145,3 @@ gulp.task('js:uglify',function(){
         .pipe(gulp.dest(path.js.dest));      //javascript 파일을 저장
 });
 
-
-/*
-gulp.task('css:lint',function(){
-    gulp.src(path.css.src)
-        .pipe(csslint({'import':false}))             //css 파일을 검사
-        //.pipe(csslint.reporter())
-});
-gulp.task('css:concat',function(){
-    gulp.src(path.css.src)
-        .pipe(concatcss(path.css.filename))  //css 파일을 병합
-        .pipe(gulp.dest(path.css.dest))
-});
-gulp.task('css:uglify',function(){
-    gulp.src(path.css.dest +'/'+ path.css.filename)
-        .pipe(uglifycss({              //css 파일을 한줄정리
-            mangle: false,
-            preserveComments : 'all'
-        }))
-        .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest(path.css.dest));      //css 파일을 저장
-});
-*/
-/*
-gulp.task('scripts',function(){
-   gulp
-        //.src('./src/*.js')
-        .pipe(jshint())             //javascript 파일을 검사
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(concat('common.js'))  //javascript 파일을 한줄정리
-        .pipe(gulp.dest('./dist/js'))
-        .pipe(uglify({              //javascript 파일을 병합
-            mangle: false,
-            preserveComments : 'all'
-        }))
-        .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('./dist/js'));      //javascript 파일을 저장
-});
-*/

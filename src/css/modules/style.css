@@ -73,3 +73,12 @@ body p {
 #wrap #container .content .visual ul a {
 	display: block;
 }
+
+/* line 53, src/scss/style.scss */
+#wrap #container .content .visual ul a span {
+	display: block;
+	background-color: #000;
+	font-size: 0;
+	line-height: 0;
+	padding: 0;
+}
