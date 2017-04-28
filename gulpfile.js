@@ -1,5 +1,6 @@
 var gulp        = require('gulp'); // gulp 모듈
 var spritesmith = require('gulp.spritesmith');
+var webserver = require('gulp-webserver');
 var sourcemaps  = require('gulp-sourcemaps');
 var autoprefixer= require('gulp-autoprefixer');
 var sass        = require('gulp-sass');
@@ -12,10 +13,12 @@ var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var gulpif      = require('gulp-if');
 var del         = require('del');
-var csso = require('gulp-csso');
-var buffer = require('vinyl-buffer');
-var imagemin = require('gulp-imagemin');
-var merge = require('merge-stream');
+var csso        = require('gulp-csso');
+var livereload  = require('gulp-livereload');
+var buffer      = require('vinyl-buffer');
+var fileinclude = require('gulp-file-include');
+var imagemin    = require('gulp-imagemin');
+var merge       = require('merge-stream');
 
 var config = {
     lint    : true,
@@ -51,7 +54,25 @@ gulp.task('watch',function(){
 });
 
 gulp.task('clean',function(){
-   del(['dist/*']) 
+   del(['dist/*']);
+});
+
+gulp.task('server', function(){
+    return gulp.src('./dist/html/')
+        .pipe(webserver({
+            fallback: 'index.html',
+            livereload: true,
+            open: true
+        }));
+});
+
+gulp.task('fileinclude', function() {
+    gulp.src(['./html/*.html'],{base:'./'})
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('./dist'));
 });
 
 var scssOptions = { 
