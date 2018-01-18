@@ -1,153 +1,169 @@
-var gulp        = require('gulp'); // gulp 모듈
-var spritesmith = require('gulp.spritesmith');
-var webserver = require('gulp-webserver');
-var sourcemaps  = require('gulp-sourcemaps');
-var autoprefixer= require('gulp-autoprefixer');
-var sass        = require('gulp-sass');
-var csslint     = require('gulp-csslint');
-var concatcss   = require('gulp-concat-css');
-var uglifycss   = require('gulp-uglifycss');
-var rename      = require('gulp-rename');
-var jshint      = require('gulp-jshint');
-var concat      = require('gulp-concat');
-var uglify      = require('gulp-uglify');
-var gulpif      = require('gulp-if');
-var del         = require('del');
-var csso        = require('gulp-csso');
-var livereload  = require('gulp-livereload');
-var buffer      = require('vinyl-buffer');
-var fileinclude = require('gulp-file-include');
-var imagemin    = require('gulp-imagemin');
-var merge       = require('merge-stream');
+var gulp = require('gulp'),
+    spritesmith = require('gulp.spritesmith'),
+    csso = require('gulp-csso'),
+    sourcemaps = require('gulp-sourcemaps'),
+    buffer = require('vinyl-buffer'),
+    imagemin = require('gulp-imagemin'),
+    merge = require('merge-stream'),
+    sass = require('gulp-sass'),
+    sassGlob = require('gulp-sass-glob'),
+    include = require('gulp-html-tag-include'),
+    autoprefixer= require('gulp-autoprefixer'),
+    csslint = require('gulp-csslint'),
+    concatcss = require('gulp-concat-css'),
+    uglifycss = require('gulp-uglifycss'),
+    rename = require('gulp-rename'),
+    jshint = require('gulp-jshint'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    importCss = require('gulp-import-css'),
+    SourceMapSupport = require('gulp-sourcemaps-support');
 
+var source = 'src/';
+var develop = 'dist/';
 var config = {
-    lint    : true,
-    concat  : true,
-    uglify  : true,
-    rename  : true
-};
-
-var path ={
-    js:{
-        src: 'src/**/*.js',
-        dest:'dist/js',
-        filename:'common.js'
+  lint    : true,
+  concat  : true,
+  uglify  : true,
+  rename  : true,
+  path : {
+    img : {
+      src : source + 'img/**/*.png',
+      dist : develop + 'img',
+      cssSend: develop + 'css'
     },
-    css:{
-        src:'src/css/*.css',
-        dest:'dist/css',
-        filename:'default.css'
+    html : {
+      src : source + 'html/**/*.html',
+      dist : develop + 'html/'
     },
-    sass:{
-        src:'src/**/*.scss'
+    // sass : {
+    //   baseSrc : source + 'scss/',
+    //   sassOut : source + 'css',
+    //   finalDist: develop + 'css/',
+    //   user:{
+    //     src:source +'scss/user.scss',
+    //     filename:'user.css'
+    //   },
+    //   system:{
+    //     src:source +'scss/system.scss',
+    //     filename:'system.css'
+    //   },
+    //   stats:{
+    //     src:source +'scss/stats.scss',
+    //     filename:'stats.css'
+    //   },
+    //   manage:{
+    //     src:source +'scss/user.scss',
+    //     filename:'manage.css'
+    //   },
+    //   common:{}
+    // },
+    sass : {
+      src : source + 'scss/**/*.{scss,sass,css}',
+      out : source + 'css/',
+      cssFile : source + 'css/*.css',
+      dist : develop + 'css/'
+    },
+    js : {
+      src : source + 'js/*.js',
+      dist : develop + 'js/'
     }
+  }
+};
+/* js */
+gulp.task('scripts',function(){});
+/* 사스 */
+var scssOptions = {
+  /**
+   * outputStyle (Type : String , Default : nested)
+   * CSS의 컴파일 결과 코드스타일 지정
+   * Values : nested, expanded, compact, compressed
+   */
+  outputStyle : "expanded",
+  /**
+   * indentType (>= v3.0.0 , Type : String , Default : space)
+   * 컴파일 된 CSS의 "들여쓰기" 의 타입 * Values : space , tab
+   */
+  indentType : "tab",
+  /**
+   * indentWidth (>= v3.0.0, Type : Integer , Default : 2)
+   * 컴파일 된 CSS의 "들여쓰기" 의 갯수
+   */
+  indentWidth : 1, // outputStyle 이 nested, expanded 인 경우에 사용
+  /**
+   * precision (Type : Integer , Default : 5)
+   * 컴파일 된 CSS 의 소수점 자리수.
+   */
+  precision: 6,
+  /**
+   * sourceComments (Type : Boolean , Default : false)
+   * 컴파일 된 CSS 에 원본소스의 위치와 줄수 주석표시.
+   */
+  sourceComments: false
 };
 
-
-// gulp.task()를 사용해 기본 디폴트 데스크 정의
-gulp.task('default',['sprite','sass','styles','scripts']);
-
-gulp.task('watch',function(){
-    gulp.watch(path.sass.src, ['sass']),
-    gulp.watch(path.css.src, ['styles']),
-    gulp.watch(path.js.src, ['scripts']);
+// gulp.task('sass', function(){
+//   return gulp.src(config.path.sass.src)
+//     .pipe(sourcemaps.init())
+//     .pipe(sassGlob())
+//     .pipe(sass(scssOptions).on('error', sass.logError))
+//     .pipe(sourcemaps.write('./maps'))
+//     .pipe(gulp.dest(config.path.sass.out));
+// });
+/* css */
+gulp.task('styles', function(){
+  return gulp.src(config.path.sass.src)
+  .pipe(sassGlob())
+   // .pipe(SourceMapSupport())
+   .pipe(sourcemaps.init())
+  .pipe(sass(scssOptions).on('error', sass.logError))
+   .pipe(sourcemaps.write('.'))
+  .pipe(importCss())
+  .pipe(autoprefixer())
+  .pipe(gulp.dest(config.path.sass.dist))
+  .pipe(uglifycss())
+  .pipe(rename({suffix:'.min'}))
+  .pipe(gulp.dest(config.path.sass.dist))
 });
 
-gulp.task('clean',function(){
-   del(['dist/*']);
+/* html-include */
+gulp.task('html-include', function(){
+  return gulp.src(config.path.html.src)
+    .pipe(include())
+    .pipe(gulp.dest(config.path.html.dist));
 });
 
-gulp.task('server', function(){
-    return gulp.src('./dist/html/')
-        .pipe(webserver({
-            fallback: 'index.html',
-            livereload: true,
-            open: true
-        }));
-});
-
-gulp.task('fileinclude', function() {
-    gulp.src(['./html/*.html'],{base:'./'})
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(gulp.dest('./dist'));
-});
-
-var scssOptions = { 
-        /** 
-        * outputStyle (Type : String , Default : nested) 
-        * CSS의 컴파일 결과 코드스타일 지정 
-        * Values : nested, expanded, compact, compressed 
-        */ 
-        outputStyle : "expanded", 
-        /** 
-        * indentType (>= v3.0.0 , Type : String , Default : space) 
-        * 컴파일 된 CSS의 "들여쓰기" 의 타입 * Values : space , tab 
-        */ 
-        indentType : "tab", 
-        /** 
-        * indentWidth (>= v3.0.0, Type : Integer , Default : 2) 
-        * 컴파일 된 CSS의 "들여쓰기" 의 갯수 
-        */ 
-        indentWidth : 1, // outputStyle 이 nested, expanded 인 경우에 사용 
-        /** 
-        * precision (Type : Integer , Default : 5) 
-        * 컴파일 된 CSS 의 소수점 자리수. 
-        */ 
-        precision: 6, 
-        /** 
-        * sourceComments (Type : Boolean , Default : false) 
-        * 컴파일 된 CSS 에 원본소스의 위치와 줄수 주석표시. 
-        */ 
-        sourceComments: true 
-};
-// image spritesmith
+/* 스프라이트 이미지 */
 gulp.task('sprite', function(){
-    var spriteData = gulp.src('images/pc/btn'+'*.png')
+  var spriteData = gulp.src(config.path.img.src)
     .pipe(spritesmith({
-        imgName: 'btn-sprite.png',
-        padding: 20,
-        algorithm: 'binary-tree',//top-down , binary-tree , left-right
-        cssName: 'btn-sprite.css'
-    }));
+        imgName: 'ico-sprite.png',
+        imgPath: '../img/ico-sprite.png',
+        padding:10,
+        cssFormat: 'scss',
+        cssName: 'ico-sprite.scss'
+      }));
 
-    var imgStream = spriteData.img
-        .pipe(buffer())
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/img'));
+  // Pipe image stream through image optimizer and onto disk
+  var imgStream = spriteData.img
+  // DEV: We must buffer our stream into a Buffer for `imagemin`
+    .pipe(buffer())
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.path.img.dist));
 
-    var cssStream = spriteData.css
-        .pipe(csso())
-        .pipe(gulp.dest('dist/css'));
+  // Pipe CSS stream through CSS optimizer and onto disk
+  var cssStream = spriteData.css
+    // .pipe(sourcemaps.init())
+    .pipe(csso())
+    // .pipe(sourcemaps.write('.'))
+      .pipe(uglifycss())
+      .pipe(rename({suffix:'.min'}))
+    .pipe(gulp.dest(config.path.img.cssSend));
 
-    return merge(imgStream, cssStream);
-
+  // Return a merged stream to handle both `end` events
+  return merge(imgStream, cssStream);
 });
 
-// sass
-gulp.task('sass', function (){ 
-    return gulp.src('src/scss/**/*.scss') 
-        .pipe(sass(scssOptions).on('error', sass.logError)) 
-        .pipe(gulp.dest('src/css/modules'));
-});
-
-// style
-gulp.task('styles',function(){
-    gulp.src(path.css.src)
-        .pipe(gulpif(config.lint, csslint({'import':false})) )             //css 파일을 검사
-        .pipe(gulpif(config.concat, concatcss(path.css.filename)) )  //css 파일을 병합
-        .pipe(sourcemaps.init())
-        .pipe(autoprefixer())
-        .pipe(gulpif(config.rename, gulp.dest(path.css.dest)) )
-        .pipe(gulpif(config.uglify ,uglifycss()) )
-        .pipe(gulpif(config.rename, rename({suffix:'.min'})) )
-        .pipe(gulp.dest( path.css.dest ));      //css 파일을 저장
-    
-});
-
-// script
 gulp.task('scripts',['js:hint','js:concat','js:uglify']);
 
 gulp.task('js:hint',function(){
@@ -170,3 +186,11 @@ gulp.task('js:uglify',function(){
         .pipe(gulp.dest(path.js.dest));      //javascript 파일을 저장
 });
 
+/* watch */
+gulp.task('watch',function(){
+  gulp.watch(config.path.html.src, ['html-include']);
+  gulp.watch(config.path.sass.src, ['styles']);
+});
+
+
+gulp.task('default',['watch','styles','html-include']);//,'html-include'

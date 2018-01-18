@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>통계</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/stats.css" />
+    <link rel="stylesheet" href="../../../../css/jquery.jqplot.min.css">
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../../../../js/lib/plugins/excanvas.js"></script><![endif]-->
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="통계 관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">통계 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="adminSetTop.html">셋톱 통계</a></li>
+                            <li class="active"><a href="adminContent.html">콘텐츠 통계</a></li>
+                            <li><a href="logManage.html">로그 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <!--본문 내용-->
+            <article class="view_content view_stats">
+                <form action="">
+                    <fieldset>
+                        <legend class="screen_out">로그 관리</legend>
+                        <div class="area_search">
+                            <div class="box_term need_txtBar">
+                                <label for="">조회기간</label>
+                                <div class="inner_calendar">
+                                    <input type="text" id="scheduleStartDate">
+
+                                </div>
+                                <span class="txt_wave">~</span>
+                                <div class="inner_calendar">
+                                    <input type="text" id="scheduleEndDate">
+
+                                </div>
+                                <button class="btn_line active">주</button>
+                                <button class="btn_line">월</button>
+                                <button class="btn_line">년</button>
+                            </div>
+                            <div class="box_series chk_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">조회 단위</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpTerm">조회 단위</label>
+                                    <div class="inner_chkbox">
+                                        <input id="inpTerm" class="ico_admin icon-ico-chk" type="radio" name="chkTerm" title="일" checked="">
+                                        <span>일</span>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="radio" class="ico_admin icon-ico-chk" name="chkTerm" title="주">
+                                        <span>주</span>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="radio" class="ico_admin icon-ico-chk" name="chkTerm" title="월">
+                                        <span>월</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_series box_search">
+                                <button type="button">검색</button>
+                            </div>
+                        </div>
+                        <h3 class="tit_view"><span class="txt_title">전체현황</span></h3>
+                        <div class="area_board">
+                            <table class="tbl_mix">
+                                <colgroup>
+                                    <col style="width:12%">
+                                    <col style="width:13%">
+                                    <col style="width:12%">
+                                    <col style="width:13%">
+                                    <col style="width:12%">
+                                    <col style="width:13%">
+                                    <col style="width:12%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th>전체 재생 시간</th>
+                                    <td>3,154,681</td>
+                                    <th>전체 재생 횟수</th>
+                                    <td>2,864,315</td>
+                                    <th>유효 재생 시간</th>
+                                    <td>290,366</td>
+                                    <th>무료 재생 횟수</th>
+                                    <td>290,366</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h3 class="tit_view"><span class="txt_title">전체현황</span></h3>
+                        <div class="area_halfAndhalf">
+                            <div class="area_board box_board">
+                                <strong class="tit_board">셋톱 등록 현황</strong>
+                                <table>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>오늘</th>
+                                        <th>전일</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>등록</td>
+                                        <td>14,154</td>
+                                        <td>10,375</td>
+                                    </tr>
+                                    <tr>
+                                        <td>연동</td>
+                                        <td>14,000</td>
+                                        <td>10,112</td>
+                                    </tr>
+                                    <tr>
+                                        <td>미연동</td>
+                                        <td>154</td>
+                                        <td>263</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="box_graph">
+                                    <div class="inner_graph">
+                                        <div class="graph_rod">
+                                            <div class="inner_rod">
+                                                <div class="rod_active" style="width:70%;">활성화</div>
+                                            </div>
+                                            <div class="inner_txt">
+                                                <div class="txt_left">
+                                                    <strong>연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 82% )</em></span>
+                                                </div>
+                                                <div class="txt_right">
+                                                    <strong>미연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 18% )</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="area_graph">
+                                <div class="box_graph jqplot_graph">
+                                    <div class="info_graph">
+                                        <ul>
+                                            <li><i class="ico_admin icon-line01"></i><span>등록</span></li>
+                                            <li><i class="ico_admin icon-line02"></i><span>연동</span></li>
+                                            <li><i class="ico_admin icon-line03"></i><span>미연동</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inner_graph">
+                                        <div id="chart1" style="width:580px;height:250px; "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area_halfAndhalf">
+                            <div class="area_board box_board">
+                                <strong class="tit_board">셋톱 등록 현황</strong>
+                                <table>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>오늘</th>
+                                        <th>전일</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>등록</td>
+                                        <td>14,154</td>
+                                        <td>10,375</td>
+                                    </tr>
+                                    <tr>
+                                        <td>연동</td>
+                                        <td>14,000</td>
+                                        <td>10,112</td>
+                                    </tr>
+                                    <tr>
+                                        <td>미연동</td>
+                                        <td>154</td>
+                                        <td>263</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="box_graph">
+                                    <div class="inner_graph">
+                                        <div class="graph_rod">
+                                            <div class="inner_rod">
+                                                <div class="rod_active" style="width:70%;">활성화</div>
+                                            </div>
+                                            <div class="inner_txt">
+                                                <div class="txt_left">
+                                                    <strong>연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 82% )</em></span>
+                                                </div>
+                                                <div class="txt_right">
+                                                    <strong>미연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 18% )</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="area_graph">
+                                <div class="box_graph jqplot_graph">
+                                    <div class="info_graph">
+                                        <ul>
+                                            <li><i class="ico_admin icon-line01"></i><span>등록</span></li>
+                                            <li><i class="ico_admin icon-line02"></i><span>연동</span></li>
+                                            <li><i class="ico_admin icon-line03"></i><span>미연동</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inner_graph">
+                                        <div id="chart1" style="width:580px;height:250px; "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="tit_view"><span class="txt_title">사업자 현황</span></h3>
+                        <div class="area_search">
+                            <form name="userVO" id="adminSearchForm" method="get" action="/user/admin/" onsubmit="return false;">
+                                <div class="box_select">
+                                    <label for="searchUserStatCd">사업자 선택</label>
+                                    <div class="inner_select">
+                                        <select name="userStatCd" id="searchUserStatCd">
+                                            <option value="">전체</option>
+                                            <option value="">관리자</option>
+                                            <option value="">사업자</option>
+                                            <option value="">광고주</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="area_board">
+                            <div class="box_info">
+                                <span class="txt_info">총 10 건</span>
+                                <div class="area_btn">
+                                    <button class="btn_line btn_excel">Excel 다운로드</button>
+                                </div>
+                            </div>
+                            <table>
+                                <colgroup>
+                                    <col style="width:3%">
+                                    <col>
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th rowspan="3">No.</th>
+                                    <th rowspan="3" class="boundary">사업자</th>
+                                    <th colspan="6" class="boundary">콘텐츠 재생 시간</th>
+                                    <th colspan="6">콘텐츠 재생 횟수</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">전체</th>
+                                    <th colspan="2">유효</th>
+                                    <th colspan="2" class="boundary">무효</th>
+                                    <th colspan="2">전체</th>
+                                    <th colspan="2">유효</th>
+                                    <th colspan="2">무효</th>
+                                </tr>
+                                <tr>
+                                    <th>전체</th>
+                                    <th>오늘</th>
+                                    <th>전체</th>
+                                    <th>오늘</th>
+                                    <th>전체</th>
+                                    <th class="boundary">오늘</th>
+                                    <th>전체</th>
+                                    <th>오늘</th>
+                                    <th>전체</th>
+                                    <th>오늘</th>
+                                    <th>전체</th>
+                                    <th>오늘</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>100</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>99</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>98</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>97</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>96</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>95</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>94</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>93</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>92</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>91</td>
+                                    <td class="boundary">달콤커피</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td class="boundary">6</td>
+                                    <td>1,124</td>
+                                    <td>23</td>
+                                    <td>865</td>
+                                    <td>17</td>
+                                    <td>301</td>
+                                    <td>6</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <include src="../include/paging.html"></include>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<script type="text/javascript" src="/resources/js/lib/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="/resources/js/lib/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<script>
+    function useDatepicker(obj){
+        obj.datepicker({
+            showOn: "both",
+            dateFormat:'yy-mm-dd',
+            buttonText: '<span class="ico_admin icon-ico-calender">달력</span>'
+        });
+    }
+
+    function moveActive(obj){
+        obj.click(function(){
+            obj.removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+    }
+
+
+    $(document).ready(function(){
+        useDatepicker($('#scheduleStartDate'));
+        useDatepicker($('#scheduleEndDate'));
+        moveActive($('.box_term .btn_line'));
+
+        var line1 = [[11.23, 2000],[11.24, 700],[11.25, 1000],[11.26, 7000],[11.27, 6000]];
+//         for (var i=0; i<2*Math.PI; i+=0.4){
+//            sinPoints.push([i, 2*Math.sin(i-.8)]);
+//         }
+
+        var line2 = [[11.23, 3000],[11.24, 1200],[11.25, 1500],[11.26, 4000],[11.27, 5500]];
+//         for (var i=0; i<2*Math.PI; i+=1) {
+//             powPoints1.push([i, 2.5 + Math.pow(i/4, 2)]);
+//         }
+
+        var line3 = [[11.23, 4800],[11.24, 1700],[11.25, 2700],[11.26, 4900],[11.27, 4200]];
+//         for (var i=0; i<2*Math.PI; i+=1) {
+//             powPoints2.push([i, -2.5 - Math.pow(i/4, 2)]);
+//         }
+//        var ticks = [11.23,11.24,11.25,11.26,11.27]
+
+        var plot3 = $.jqplot('chart1', [line1, line2, line3],
+            {
+                title:{
+                    text:'Line Style Options',
+                    show:false
+                },
+
+                // Set default options on all series, turn on smoothing.
+                seriesDefaults: {
+                    rendererOptions:{
+                        fillToZero: true
+                    }
+                },
+                grid:{
+                    drawGridLines: false,
+                    gridLineColor:'#ececec',
+                    background:'#fff',
+                    drawBorder: false,
+                    drawMajorGridlines: false,
+                    shadow: false,
+                    borderColor:'#fff'
+                },
+                gridPadding: { top: 1 , bottom: null, left: null, right: null },
+                drawMajorGridlines:false,
+                axes:{
+                    xaxis:{
+                        ticks:[11.22,11.23,11.24,11.25,11.26,11.27,11.28],
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                        tickOptions:{
+                            numberTicks:7,
+                            showGridline:false,
+                            markSize:10,
+                            formatString:'%.4P',
+                            fontSize:'12px'
+                        }
+                    },
+                    yaxis:{
+                        pad:1,
+                        tickOptions:{
+                            numberTicks:5
+                        }
+                    }
+                },
+
+                // Series options are specified as an array of objects, one object
+                // for each series.
+                series:[
+                    {
+                        // Change our line width and use a diamond shaped marker.
+                        lineWidth:2,
+                        shadow:false,
+                        markerOptions: { style:'filledCircle',size:8,shadow:false,color:'#006bff' },color:'#b7d6ff',
+                        breakOnNull : true,
+                        disableStack:true
+                    },
+                    {
+                        // Don't show a line, just show markers.
+                        // Make the markers 7 pixels with an 'x' style
+                        lineWidth:2,
+                        shadow:false,
+                        markerOptions: { style:"filledCircle",size:8,shadow:false,color:'#999',xoffset:2 },color:'#dcdcdc',
+                        breakOnNull : true,
+                        disableStack:true
+                    },
+                    {
+                        lineWidth:2,
+                        shadow:false,
+                        // Use (open) circlular markers.
+                        markerOptions: { style:"filledCircle",size:8,shadow:false,color:'#ff0000' },color:'#ffd5d5',
+                        breakOnNull : true,
+                        disableStack:true
+                    }
+// ,
+//                    {
+//                        // Use a thicker, 5 pixel line and 10 pixel
+//                        // filled square markers.
+//                        lineWidth:5,
+//                        markerOptions: { style:"filledCircle", size:8,shadow:false,color:'#0051fd', },color:'#0051fd'
+//                    }
+                ]
+            }
+
+        );
+    });
+
+</script>
+</body>
+</html>

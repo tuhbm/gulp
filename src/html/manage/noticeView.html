@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>시스템관리</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/manage.css" />
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="운영 관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">운영 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li  class="active"><a href="noticeView.html">공지사항 관리</a></li>
+                            <li ><a href="faqView.html">FAQ 관리</a></li>
+                            <li ><a href="distributionView.html">배포 관리</a></li>
+                            <li ><a href="downloadView.html">다운로드 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <!--본문 내용-->
+            <article class="view_content view_manage">
+                <fieldset>
+                    <legend class="screen_out">공지사항 관리</legend>
+                    <div class="area_search miniTerm_condition1">
+                        <form name="noticeVO" id="noticeSearchForm" method="get" action="/manage/notice/" onsubmit="return false;">
+                            <div class="box_term need_txtBar">
+                                <label for="startDate">조회기간</label>
+                                <div class="inner_calendar">
+                                    <input type="text" name="startDate" id="startDate" value="" >
+
+                                </div>
+                                <span class="txt_wave">~</span>
+                                <div class="inner_calendar">
+                                    <input type="text" name="endDate" id="endDate" value="" >
+
+                                </div>
+                            </div>
+                            <div class="box_select first_item">
+                                <label for="searchCondition" class="screen_out">공지대상</label>
+                                <div class="inner_select">
+                                    <select name="searchCondition" id="searchCondition">
+                                        <option value=""  >공지대상</option>
+                                        <option value="admin"  >관리자</option>
+                                        <option value="place"  >사업자</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box_series box_search">
+                                <div class="box_select">
+                                    <label for="searchGbNm" class="screen_out">검색항목</label>
+                                    <div class="inner_select">
+                                        <select name="searchGbNm" id="searchGbNm">
+                                            <option value="" >검색항목</option>
+                                            <option value="notifyTit"   >제목</option>
+                                            <option value="createId"    >작성자</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="inner_series mini">
+                                    <label class="screen_out" for="searchNm">검색어를 입력해주세요.</label>
+                                    <input id="searchNm" name="searchNm" type="text" placeholder="검색어를 입력해주세요."  value=""  >
+                                </div>
+                                <button type="button" onclick="noticeSearchForm.submit()" >검색</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="area_board">
+                        <div class="box_info">
+                            <span class="txt_info">총 건</span>
+                            <div class="area_btn">
+                                <a href="noticeForm.html" class="btn_line link_register">등록</a>
+                            </div>
+                        </div>
+                        <table>
+                            <colgroup>
+                                <col style="width:3%">
+                                <col style="width:8%">
+                                <col>
+                                <col style="width:13%">
+                                <col style="width:10%">
+                                <col style="width:10%">
+                                <col style="width:10%">
+                                <col style="width:10%">
+                                <col style="width:13%">
+                                <!-- <col style="width:154px">
+                                <col style="width:123px"> -->
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>공지대상</th>
+                                    <th>제목</th>
+                                    <th>게시 기간</th>
+                                    <th>게시상태</th>
+                                    <th>메인공지</th>
+                                    <th>사용여부</th>
+                                    <th>작성자</th>
+                                    <th>작성일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>관리자</td>
+                                    <td class="txt_alignLeft"><a href="/manage/noticeForm/?notifyMatterId=NOTI20171122163543000005">1</a></td>
+                                    <td>2017.11.01~2017.11.30</td>
+                                    <td>게시</td>
+                                    <td>사용</td>
+                                    <td>사용</td>
+                                    <td>관리자</td>
+                                    <td>2017.11.22</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>전체</td>
+                                    <td class="txt_alignLeft"><a href="/manage/noticeForm/?notifyMatterId=NOTI20171124143002000648">Welcome to TiTAN Cloud CMS</a></td>
+                                    <td>2017.11.24~2017.11.30</td>
+                                    <td>게시</td>
+                                    <td>사용</td>
+                                    <td>사용</td>
+                                    <td>관리자</td>
+                                    <td>2017.11.24</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <include src="../include/paging.html"></include>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<script>
+    function useDatepicker(obj){
+        obj.datepicker({
+            showOn: "both",
+            dateFormat:'yy-mm-dd',
+            buttonText: '<span class="ico_admin icon-ico-calender">달력</span>'
+        });
+    }
+
+    function moveActive(obj){
+        obj.click(function(){
+            obj.removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+    }
+
+    $(document).ready(function(){
+        useDatepicker($('#startDate'));
+        useDatepicker($('#endDate'));
+        moveActive($('.box_term .btn_line'));
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>운영 관리</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/manage.css"/>
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="운영 관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">운영 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="noticeView.html">공지사항 관리</a></li>
+                            <li><a href="faqView.html">FAQ 관리</a></li>
+                            <li><a href="distributionView.html">배포 관리</a></li>
+                            <li class="active"><a href="downloadView.html">다운로드 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <article class="view_content view_manage">
+                <fieldset>
+                    <legend class="screen_out">LMS 발송 관리</legend>
+                    <div class="area_search condition2">
+                        <div class="box_select first_item">
+                            <label for="sel_down" class="screen_out">발송대상</label>
+                            <div class="inner_select">
+                                <select name="" id="sel_down">
+                                    <option value="">발송대상</option>
+                                    <option value="">전체</option>
+                                    <option value="">사업자</option>
+                                    <option value="">회원</option>
+                                    <option value="">직접</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box_select">
+                            <label for="selStatsMenu" class="screen_out">발송방식</label>
+                            <div class="inner_select">
+                                <select name="" id="selStatsMenu">
+                                    <option value="">발송방식</option>
+                                    <option value="">전체</option>
+                                    <option value="">즉시발송</option>
+                                    <option value="">예약발송</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box_series box_search">
+                            <div class="box_select first_item">
+                                <label for="" class="screen_out">발송상태</label>
+                                <div class="inner_select">
+                                    <select name="" id="">
+                                        <option value="">발송상태</option>
+                                        <option value="">전체</option>
+                                        <option value="">대기</option>
+                                        <option value="">발송완료</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="inner_series mini">
+                                <label class="screen_out" for="inpSearch">검색어를 입력해주세요.</label>
+                                <input id="inpSearch" type="text" placeholder="검색어를 입력해주세요.">
+                            </div>
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+                    <div class="area_board">
+                        <div class="box_info">
+                            <span class="txt_info">총 ${adminList.data.adminUserListCnt}건</span>
+                            <div class="area_btn">
+                                <a href="/user/adminForm/" class="btn_line link_register">등록</a>
+                            </div>
+                        </div>
+                        <table>
+                            <colgroup>
+                                <col style="width:3%">
+                                <col>
+                                <col style="width:8%">
+                                <col style="width:8%">
+                                <col style="width:8%">
+                                <col style="width:13%">
+                                <col style="width:8%">
+                                <col style="width:8%">
+                                <col style="width:11%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>제목</th>
+                                <th>발송대상</th>
+                                <th>발송수</th>
+                                <th>발송방식</th>
+                                <th>발송일시</th>
+                                <th>발송상태</th>
+                                <th>작성자</th>
+                                <th>작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="txt_alignLeft"><a href="">sdjfdsifjsdpjfpds</a></td>
+                                    <td>fdsafdsafd</td>
+                                    <td><a href="" class="btn_sendNum">11111</a></td>
+                                    <td>fdsfdsafd</td>
+                                    <td>fdsafdsafdsafadsfsd</td>
+                                    <td>fdsafdsafdsafadsfsd</td>
+                                    <td>fdsafdsafdsafadsfsd</td>
+                                    <td>fdsafdsafdsafadsfsd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <include src="../include/paging.html"></include>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<!-- LMS 발송 리스트 팝업 시작 -->
+<div class="area_popup large_popup sendList_popup"><!-- active 클래스 추가시 display:block -->
+    <div class="inner_popup">
+        <div class="box_popup">
+            <form action="">
+                <div class="head_popup">
+                    <strong>LMS 발송 회원 리스트</strong>
+                </div>
+                <div class="body_popup">
+                    <div class="area_search condition1">
+                        <div class="box_select first_item">
+                            <label for="sel_state" class="screen_out">발송상태</label>
+                            <div class="inner_select">
+                                <select name="" id="sel_state">
+                                    <option value="">발송상태</option>
+                                    <option value="">전체</option>
+                                    <option value="">발송완료</option>
+                                    <option value="">발송실패</option>
+                                    <option value="">대기중</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box_series box_search">
+                            <div class="box_select">
+                                <label for="selSort" class="screen_out">검색항목</label>
+                                <div class="inner_select">
+                                    <select name="" id="selSort">
+                                        <option value="">검색항목</option>
+                                        <option value="">전체</option>
+                                        <option value="">사업자명</option>
+                                        <option value="">회원ID</option>
+                                        <option value="">휴대폰번호</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="inner_series mini">
+                                <label class="screen_out" for="inpSearch">검색어를 입력해주세요.</label>
+                                <input id="inpSearch" type="text" placeholder="검색어를 입력해주세요.">
+                            </div>
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+                    <div class="area_board">
+                        <div class="box_info">
+                            <span class="txt_info">총 ${adminList.data.adminUserListCnt}건</span>
+                            <div class="area_btn">
+                                <a href="/user/adminForm/" class="btn_line btn_excel">excel 다운로드</a>
+                            </div>
+                        </div>
+                        <div class="box_table">
+                            <table>
+                                <colgroup>
+                                    <col style="width:5%">
+                                    <col>
+                                    <col style="width:10%">
+                                    <col style="width:15%">
+                                    <col style="width:10%">
+                                    <col style="width:15%">
+                                    <col style="width:10%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>사업자명</th>
+                                    <th>회원ID</th>
+                                    <th>휴대폰번호</th>
+                                    <th>발송상태</th>
+                                    <th>발송일시</th>
+                                    <th>관리</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td class="send_fail">발송실패</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td class="send_fail">발송실패</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td class="txt_alignLeft">늘푸른동산</td>
+                                    <td>fjkdlsjafdsfpew</td>
+                                    <td>010-1111-1111</td>
+                                    <td>발송완료</td>
+                                    <td>2017.09.25 14:00</td>
+                                    <td>
+                                        <button type="button" class="btn_reSend">재발송</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <include src="../include/paging.html"></include>
+                    </div>
+                </div>
+                <div class="area_btn">
+                    <div class="inner_btns">
+                        <button type="button" class="btn_full btn_enter">확인</button>
+                    </div>
+                </div>
+                <button type="button" class="btn_close"><span class="ico_admin icon-ico-close">닫기</span></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- LMS 발송 리스트 팝업 끝 -->
+<script>
+    function closePopup() {
+        $(this).parents('.area_popup').removeClass('active');
+    }
+
+    function viewPopup() {
+
+        $('.sendList_popup').addClass('active');
+        return false;
+    }
+
+    $('.btn_close, .btn_enter').click(closePopup);
+    $('.btn_sendNum').click(viewPopup);
+</script>
+</body>
+</html>

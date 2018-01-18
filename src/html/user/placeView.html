@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>사용자관리</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/user.css" />
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="사용자관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">사용자관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="adminView.html" >관리자 계정 관리</a></li>
+                            <li class="active"><a href="placeView.html" >사업자 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <!--본문 내용-->
+            <article class="view_content">
+                <fieldset>
+                    <legend class="screen_out">사업자 관리</legend>
+                    <div class="area_search condition1">
+                        <form name="placeVO" id="placeSearchForm" method="get" action="/user/place/" onsubmit="return false;">
+                            <div class="box_select">
+                                <label class="screen_out">사용여부</label>
+                                <div class="inner_select">
+                                    <select name="useYn">
+                                        <option value="">사용여부</option>
+                                        <option value="">전체</option>
+                                        <option value="Y" >사용</option>
+                                        <option value="N" >미사용</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box_series box_search">
+                                <div class="box_select">
+                                    <label class="screen_out">검색항목</label>
+                                    <div class="inner_select">
+                                        <select name="searchCondition">
+                                            <option value="">검색항목</option>
+                                            <option value="">전체</option>
+                                            <option value="placeNm" >업체명</option>
+                                            <option value="prsnNm" >담당자명</option>
+                                            <option value="prsnTelNum" >연락처</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="inner_series ">
+                                    <label class="screen_out" for="inpSearch">검색어를 입력해주세요.</label>
+                                    <input id="inpSearch" type="text" name="searchText" placeholder="검색어를 입력해주세요." value="">
+                                </div>
+                                <button type="button"onclick="placeSearchForm.submit(); ">검색</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="area_board">
+                        <div class="box_info">
+                            <span class="txt_info">총 14 건</span>
+                            <div class="area_btn">
+                                <button class="btn_line btn_excel" onclick="excelDownload();">Excel 다운로드</button>
+                                <a href="placeForm.html" class="btn_line link_register">등록</a>
+                            </div>
+                        </div>
+                        <table>
+                            <colgroup>
+                                <col style="width:5%">
+                                <col style="width:15%">
+                                <col>
+                                <col style="width:15%">
+                                <col style="width:15%">
+                                <col style="width:15%">
+                                <col style="width:15%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>사업자 유형</th>
+                                    <th>업체명</th>
+                                    <th>담당자명</th>
+                                    <th>담당자 연락처</th>
+                                    <th>사용여부</th>
+                                    <th>등록일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>사업자</td>
+                                    <td><a href="placeModify.html">TiTAN South East Asia</a></td>
+                                    <td>brian.bae</td>
+                                    <td>65-9640-7026</td>
+                                    <td>Y</td>
+                                    <td>2017-11-24 14:26:10.0</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171123130215000231">testPlace7</a></td>
+                                    <td>담당자</td>
+                                    <td>02-000-0000</td>
+                                    <td>Y</td>
+                                    <td>2017-11-23 13:02:15.0</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171121104354000175">testPlace6</a></td>
+                                    <td>담당자</td>
+                                    <td>010-5658-7878</td>
+                                    <td>Y</td>
+                                    <td>2017-11-21 10:43:54.0</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171120142407000835">글로벌사업부</a></td>
+                                    <td>최종기</td>
+                                    <td>010-6731-1274</td>
+                                    <td>Y</td>
+                                    <td>2017-11-20 14:24:07.0</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171117103811000848">testSgPlace</a></td>
+                                    <td>test1</td>
+                                    <td>010-4545-6565</td>
+                                    <td>Y</td>
+                                    <td>2017-11-17 10:38:11.0</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171117103610000653">testUsPlace</a></td>
+                                    <td>test</td>
+                                    <td>010-4545-6565</td>
+                                    <td>Y</td>
+                                    <td>2017-11-17 10:36:10.0</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171116165931000696">testPlace5</a></td>
+                                    <td>담당자5</td>
+                                    <td>010-4567-4567</td>
+                                    <td>Y</td>
+                                    <td>2017-11-16 16:59:31.0</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171116165853000083">testPlace4</a></td>
+                                    <td>담당자4</td>
+                                    <td>010-7878-8989</td>
+                                    <td>Y</td>
+                                    <td>2017-11-16 16:58:53.0</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171116165740000589">testPlace1</a></td>
+                                    <td>담당자1</td>
+                                    <td>010-4578-6547</td>
+                                    <td>Y</td>
+                                    <td>2017-11-16 16:57:40.0</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>사업자</td>
+                                    <td><a href="/user/placeModify/?placeId=PLCE20171116165644000206">testPlace3</a></td>
+                                    <td>담당자</td>
+                                    <td>담당자3</td>
+                                    <td>Y</td>
+                                    <td>2017-11-16 16:56:44.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <include src="../include/paging.html"></include>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<script type="text/javascript" src="../../../../js/user/user.js"></script>
+</body>
+</html>

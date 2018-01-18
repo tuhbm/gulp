@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>운영 관리</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/manage.css" />
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="운영 관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">운영 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="noticeView.html">공지사항 관리</a></li>
+                            <li><a href="faqView.html">FAQ 관리</a></li>
+                            <li class="active"><a href="distributionView.html">배포 관리</a></li>
+                            <li><a href="downloadView.html">다운로드 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <article class="view_content view_register">
+                <fieldset>
+                    <legend class="screen_out">배포 등록</legend>
+                    <h3 class="tit_view"><span class="txt_title">배포 등록</span></h3>
+                    <div class="area_manager">
+                        <form id="insertUserForm" name="userVO" method="post" onsubmit="return false;">
+                            <div class="half_form left_form">
+                                <div class="box_series box_select">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">OS</strong>
+                                    </div>
+                                    <label class="screen_out" for="inpSort">OS</label>
+                                    <div class="inner_box">
+                                        <div class="inner_select">
+                                            <select name="userKindCd" id="inpSort">
+                                                <option value="">OS</option>
+                                                <option value="windows" selected="">windows</option>
+                                                <option value="android">android</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box_series box_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">제목</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpVersion">제목</label>
+                                        <input id="inpVersion" type="text">
+                                    </div>
+                                </div>
+                                <!--<div class="box_series box_term">-->
+                                    <!--<div class="inner_title">-->
+                                        <!--<strong class="tit_regist necessary">배포일시</strong>-->
+                                    <!--</div>-->
+                                    <!--<div class="inner_series inner_calendar">-->
+                                        <!--<label class="screen_out" for="inpVersion">배포일시</label>-->
+                                        <!--<input type="text" id="scheduleStartDate">-->
+                                    <!--</div>-->
+                                    <!--<div class="box_select">-->
+                                        <!--<label for="selHour" class="screen_out">시간</label>-->
+                                        <!--<div class="inner_select">-->
+                                            <!--<select name="" id="selHour">-->
+                                                <!--<option value="00">00</option>-->
+                                                <!--<option value="01">01</option>-->
+                                                <!--<option value="02">02</option>-->
+                                                <!--<option value="03">03</option>-->
+                                                <!--<option value="04">04</option>-->
+                                                <!--<option value="05">05</option>-->
+                                                <!--<option value="06">06</option>-->
+                                                <!--<option value="07">07</option>-->
+                                                <!--<option value="08">08</option>-->
+                                                <!--<option value="09">09</option>-->
+                                                <!--<option value="10">10</option>-->
+                                                <!--<option value="11">11</option>-->
+                                                <!--<option value="12">12</option>-->
+                                                <!--<option value="13">13</option>-->
+                                                <!--<option value="14">14</option>-->
+                                                <!--<option value="15">15</option>-->
+                                                <!--<option value="16">16</option>-->
+                                                <!--<option value="17">17</option>-->
+                                                <!--<option value="18">18</option>-->
+                                                <!--<option value="19">19</option>-->
+                                                <!--<option value="20">20</option>-->
+                                                <!--<option value="21">21</option>-->
+                                                <!--<option value="22">22</option>-->
+                                                <!--<option value="23">23</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="box_select">-->
+                                        <!--<label for="selMin" class="screen_out">검색항목</label>-->
+                                        <!--<div class="inner_select">-->
+                                            <!--<select name="" id="selMin">-->
+                                                <!--<option value="00">00</option>-->
+                                                <!--<option value="01">01</option>-->
+                                                <!--<option value="02">02</option>-->
+                                                <!--<option value="03">03</option>-->
+                                                <!--<option value="04">04</option>-->
+                                                <!--<option value="05">05</option>-->
+                                                <!--<option value="06">06</option>-->
+                                                <!--<option value="07">07</option>-->
+                                                <!--<option value="08">08</option>-->
+                                                <!--<option value="09">09</option>-->
+                                                <!--<option value="10">10</option>-->
+                                                <!--<option value="11">11</option>-->
+                                                <!--<option value="12">12</option>-->
+                                                <!--<option value="13">13</option>-->
+                                                <!--<option value="14">14</option>-->
+                                                <!--<option value="15">15</option>-->
+                                                <!--<option value="16">16</option>-->
+                                                <!--<option value="17">17</option>-->
+                                                <!--<option value="18">18</option>-->
+                                                <!--<option value="19">19</option>-->
+                                                <!--<option value="20">20</option>-->
+                                                <!--<option value="21">21</option>-->
+                                                <!--<option value="22">22</option>-->
+                                                <!--<option value="23">23</option>-->
+                                                <!--<option value="24">24</option>-->
+                                                <!--<option value="25">25</option>-->
+                                                <!--<option value="26">26</option>-->
+                                                <!--<option value="27">27</option>-->
+                                                <!--<option value="28">28</option>-->
+                                                <!--<option value="29">29</option>-->
+                                                <!--<option value="30">30</option>-->
+                                                <!--<option value="31">31</option>-->
+                                                <!--<option value="32">32</option>-->
+                                                <!--<option value="33">33</option>-->
+                                                <!--<option value="34">34</option>-->
+                                                <!--<option value="35">35</option>-->
+                                                <!--<option value="36">36</option>-->
+                                                <!--<option value="37">37</option>-->
+                                                <!--<option value="38">38</option>-->
+                                                <!--<option value="39">39</option>-->
+                                                <!--<option value="40">40</option>-->
+                                                <!--<option value="41">41</option>-->
+                                                <!--<option value="42">42</option>-->
+                                                <!--<option value="43">43</option>-->
+                                                <!--<option value="44">44</option>-->
+                                                <!--<option value="45">45</option>-->
+                                                <!--<option value="46">46</option>-->
+                                                <!--<option value="47">47</option>-->
+                                                <!--<option value="48">48</option>-->
+                                                <!--<option value="49">49</option>-->
+                                                <!--<option value="50">50</option>-->
+                                                <!--<option value="51">51</option>-->
+                                                <!--<option value="52">52</option>-->
+                                                <!--<option value="53">53</option>-->
+                                                <!--<option value="54">54</option>-->
+                                                <!--<option value="55">55</option>-->
+                                                <!--<option value="56">56</option>-->
+                                                <!--<option value="57">57</option>-->
+                                                <!--<option value="58">58</option>-->
+                                                <!--<option value="59">59</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="box_series box_file">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">파일등록</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <div class="txt_box"><!--<span>fjdksfjpdsjfpsd_fjdsfpdsa.ppt</span>--></div>
+                                        <label for="fileEnter">파일찾기</label>
+                                        <input id="fileEnter" type="file">
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">사용 여부</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpUse">사용 여부</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpUse" class="ico_admin icon-ico-chk" type="radio" name="chkUse" title="link" value="used" checked>
+                                            <span>사용</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="chkUse" title="down" value="unUsed">
+                                            <span>미사용</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half_form right_form">
+                                <div class="box_series box_textarea">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">내용</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="notifyTxt">내용</label>
+                                        <textarea id="notifyTxt" name="notifyTxt" cols="30" rows="10"> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <a href="distributionView.html" class="btn_line btn_cancel">취소</a>
+                            <button type="submit" class="btn_full btn_enter" onclick="insertUser();">확인</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<script>
+    function useDatepicker(obj){
+        obj.datepicker({
+            showOn: "both",
+            dateFormat:'yy-mm-dd',
+            buttonText: '<span class="ico_admin icon-ico-calender">달력</span>'
+        });
+    }
+
+    function moveActive(obj){
+        obj.click(function(){
+            obj.removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+    }
+
+    $(document).ready(function() {
+        useDatepicker($('#scheduleStartDate'));
+    });
+</script>
+</body>
+</html>

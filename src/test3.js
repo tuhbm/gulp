@@ -1,1 +1,0 @@
-var good=1,good2=2,good3=3;

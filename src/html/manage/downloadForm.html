@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>운영 관리</title>
+    <include src="../include/head_common.html"></include>
+    <link rel="stylesheet" href="../../../../css/manage.css" />
+</head>
+<body>
+<include src="../include/skip.html"></include>
+<div id="wrap">
+    <include src="../include/header.html"></include>
+    <main id="container">
+        <include src="../include/sectionHeader.html" sectionTitle="운영 관리"></include>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">운영 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="noticeView.html">공지사항 관리</a></li>
+                            <li><a href="faqView.html">FAQ 관리</a></li>
+                            <li><a href="distributionView.html">배포 관리</a></li>
+                            <li class="active"><a href="downloadView.html">다운로드 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <article class="view_content view_register">
+                <fieldset>
+                    <legend class="screen_out">다운로드 등록</legend>
+                    <h3 class="tit_view"><span class="txt_title">다운로드 등록</span><span class="info_title">* 는 필수항목 입니다.</span></h3>
+                    <div class="area_manager">
+                        <form id="insertUserForm" name="userVO" method="post" onsubmit="return false;">
+                            <div class="half_form left_form">
+                                <div class="box_series box_registId">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">프로그램 명</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="downloadFileTxt">프로그램 명</label>
+                                        <input id="downloadFileTxt" type="text" name="downloadFileTxt" placeholder="프로그램명을 입력하세요.">
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">다운로드 방식</strong>
+                                    </div>
+                                    <div id="chk_sort" class="inner_series">
+                                        <label class="screen_out" for="inpDown">다운로드 방식</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpDown" class="ico_admin icon-ico-chk" type="radio" name="downloadMethodCd" title="link" value="link" checked>
+                                            <span>link</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="downloadMethodCd" title="down" value="down">
+                                            <span>down</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box_series box_file box_down">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">파일등록</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <div class="txt_box"></div>
+                                        <label for="fileEnter">파일등록</label>
+                                        <input id="fileEnter" name="fileEnter" type="file">
+                                    </div>
+                                </div>
+                                <div class="box_series box_file box_link">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">Link url</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpUrl">Link url</label>
+                                        <input id="inpUrl" type="text" name="inpUrl" placeholder="url을 입력하세요">
+                                        <button type="button" class="btn_check">확인</button>
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">사용 여부</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpUse">사용 여부</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpUse" class="ico_admin icon-ico-chk" type="radio" name="useYn" title="사용" value="Y" checked>
+                                            <span>사용</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="useYn" title="미사용" value="N">
+                                            <span>미사용</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half_form right_form"></div>
+                        </form>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <a href="/user/admin/" class="btn_line btn_cancel">취소</a>
+                            <button type="submit" class="btn_full btn_enter" onclick="insertDownload();">확인</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <include src="../include/footer.html"></include>
+</div><!-- e ::  wrap-->
+<script>
+    $('#chk_sort input').click(function(){
+        var chkVal = $(this).val();
+        if(chkVal == 'link'){
+            $('.box_down').hide();
+            $('.box_link').show();
+        }else if(chkVal ==='down'){
+            $('.box_link').hide();
+            $('.box_down').show();
+        }
+    });
+
+    $('.btn_check').click(function(){
+        var inpUrl = $('#inpUrl').val();
+        window.open(inpUrl,'_blank');
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+@import "module/common";
+
+.needMargin_bottom{
+  margin-top:0;
+  margin-bottom:42px;
+}
+.area_search{
+  .btn_excel{
+    float:right;
+    width: 140px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 4px;
+    background-color: #ececec;
+    border: solid 1px #cccccc;
+  }
+
+  .chk_series{
+    margin-right:67px;
+
+    .inner_title{
+      float: left;
+      margin-right: 30px;
+
+      strong{
+        line-height: 32px;
+        font-size: 14px;
+        color: #333;
+        font-weight:normal;
+      }
+    }
+    .inner_chkbox{
+      margin-right:20px;
+    }
+    .inner_series{
+      float:left;
+      padding:0;
+      border:0;
+    }
+  }
+}
+.area_halfHusks{
+  overflow:hidden;
+  padding-top:100px;
+  margin-bottom:42px;
+  @include clear;
+
+  .info_half{
+    position:absolute;
+    top:-56px;
+    left:0;
+    width:100%;
+    height:32px;
+    .tit_view{
+      float:left;
+    }
+    .box_btns{
+      float:right;
+      margin-top:16px;
+    }
+
+    .btn_line{
+      width:42px;
+      height:32px;
+      line-height:32px;
+      color:#333;
+      border:1px solid #ccc;
+      text-align:center;
+      margin-left:6px;
+      border-radius: 4px;
+
+      &.active{
+        border: 1px solid #0f0c81;
+        color: #0f0c81;
+      }
+    }
+  }
+  .graph_rod{
+    padding-bottom:0
+  }
+  .area_graph{
+    width:100%;
+
+    .jqplot_graph{
+      padding:30px 50px 70px 50px;
+      .jqplot-xaxis{
+        margin-top:20px;
+        .jqplot-xaxis-tick{
+          &:first-child,&:last-child{
+            display:none
+          }
+        }
+      }
+      .jqplot-yaxis{
+        margin-right:20px;
+      }
+    }
+    .info_graph{
+      bottom:10px;
+      left:50%;
+      margin-left:-125px;
+      ul{
+        height:20px;
+      }
+      li{
+        float:left;
+        margin-left:50px;
+
+        &:first-child{
+          margin-left:0;
+        }
+      }
+    }
+  }
+}
+.area_halfAndhalf{
+  overflow:initial;
+  position:relative;
+  float:left;
+  width:49.5%;
+  margin-top:0;
+  box-sizing:border-box;
+
+  &:first-child{
+    margin-right:1%;
+  }
+
+  .area_board{
+    margin-top:0;
+    width:100%;
+    table{
+      border-bottom:1px solid #ccc;
+    }
+  }
+  .box_board{
+    float:none;
+  }
+  .area_graph{
+    float:none;
+  }
+}

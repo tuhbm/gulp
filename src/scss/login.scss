@@ -1,0 +1,179 @@
+@import "module/common";
+.wrap_login{
+  position:relative;
+  background-color:#f0f0f0;
+
+  #header{
+    width:100%;
+    float:none;
+    padding:30px 0 30px 24px;
+    background-color: #ffffff;
+    box-sizing:border-box;
+
+    .tit_logo{
+      margin:0;
+    }
+  }
+  .area_login{
+    margin:180px auto 240px;
+    width:480px;
+
+    h2{
+      text-align:center;
+      margin-bottom:30px;
+
+      p{
+        font-size:16px;
+        line-height:30px;
+        color:#666;
+      }
+    }
+    .box_input{
+      position:relative;
+      background-color:#fff;
+      padding:50px 40px;
+      border-radius: 6px;
+    }
+    .chkBox_series{
+      display:block;
+      position:absolute;
+      top:50px;
+      right:45px;
+      height:16px;
+      margin-bottom:13px;
+      text-align:right;
+
+      .inner_chkbox{
+        display:inline-block;
+        position:relative;
+        padding-right:40px;
+
+        &:after{
+          float:left;
+          content:'';
+          width:1px;
+          height:6px;
+          background-color:#d8d8d8;
+          margin-left:10px;
+          margin-top:6px;
+        }
+        .link_search{
+          position: absolute;
+          right: 0;
+          font-size: 11px;
+          color: #999;
+          text-decoration: underline;
+        }
+        .link_idSearch{
+          top:0;
+        }
+        .link_passwordSearch{
+          top:100px;
+        }
+      }
+    }
+    .box_series{
+      position:relative;
+      margin-bottom:50px;
+      float:none;
+      &.first_input{
+        margin-top:29px;
+      }
+
+      .inner_series{
+        height:48px;
+      }
+      .inner_title{
+        position:absolute;
+        top: -30px;
+        left:0;
+        strong{
+          font-size:14px;
+          color:#666;
+        }
+      }
+      .link_search{
+        position:absolute;
+        top:-28px;
+        right:0;
+        font-size:11px;
+        color:#999;
+        text-decoration: underline;
+      }
+    }
+    .btn_login{
+      width:100%;
+      height:60px;
+      border-radius:6px;
+    }
+  }
+
+  #footer{
+    position:static;
+    bottom:auto;
+    left:auto;
+    padding-bottom:50px;
+    padding-left:0;
+
+    .txt_footer{
+      display:block;
+      font-size:11px;
+      line-height:22px;
+      color:#999;
+      margin-top:10px;
+
+      &:before{
+        display:none;
+        width:0;
+        height:0;
+        float:none;
+      }
+    }
+  }
+  .box_alert{
+    display:none;
+    position:absolute;
+    top:46px;
+    left:30px;
+    width:420px;
+    padding:40px;
+    border:1px solid #999;
+    box-sizing:border-box;
+    background-color:#fff;
+    .head_alert{
+      padding-bottom:15px;
+      border-bottom:2px solid #999;
+
+      strong{
+        font-size:16px;
+        color:#333;
+      }
+    }
+    .body_alert{
+      padding:50px 0 40px;
+      text-align:center;
+
+      p{
+        font-size:14px;
+        line-height:22px;
+      }
+    }
+    .btn_enter{
+      display:block;
+      width: 70px;
+      height: 40px;
+      margin:0 auto;
+      line-height:40px;
+      border-radius: 2px;
+      background-color: #666;
+    }
+    .btn_close{
+      position:absolute;
+      top:40px;
+      right:40px;
+    }
+    &.active{
+      display:block;
+    }
+  }
+}
