@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link rel="stylesheet" href="../../../css/jquery-ui.css" />
+    <link rel="stylesheet" href="../../../css/ico-sprite.min.css"/>
+    <script type="text/javascript" src="../../../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/slick.js"></script>
+    <script type="text/javascript" src="../../../js/jstree.js"></script>
+    <script type="text/javascript" src="../../../js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../../css/login.css" />
+</head>
+<body>
+<div class="wrap_login">
+    <header id="header">
+        <h1 class="tit_logo"><a href=""><span class="ico_admin icon-ico-logo">타이탄플랫폼</span></a></h1>
+    </header>
+    <div class="area_login">
+        <h2>
+            <p>안녕하세요!</p>
+            <p>DID ADMIN 방문을 환영합니다.</p>
+        </h2>
+        <div class="box_input">
+            <form id="loginForm">
+                <div class="box_series first_input">
+                    <div class="inner_title">
+                        <strong class="tit_regist">아이디</strong>
+                    </div>
+                    <div class="inner_series">
+                        <label class="screen_out" for="loginId">ID</label>
+                        <input type="text" name="loginId" id="loginId" placeholder="아이디를 입력해주세요.">
+                    </div>
+                </div>
+                <div class="box_series">
+                    <div class="inner_title">
+                        <strong class="tit_regist">비밀번호</strong>
+                    </div>
+                    <div class="inner_series">
+                        <label class="screen_out" for="userPwd">Password</label>
+                        <input  name="userPwd" id="userPwd" type="password" placeholder="비밀번호를 입력해주세요." onkeydown="if(event.keyCode==13){login();}">
+                    </div>
+                </div>
+                <button type="button" class="btn_full btn_login" onclick="login();">로그인</button>
+                <div class="chkBox_series">
+                    <div class="inner_chkbox">
+                        <input type="checkbox" class="ico_admin icon-ico-checkbox" id="chkSaveId" checked>
+                        <label for="" >ID저장</label>
+                        <input type="hidden" name="saveId" value="N">
+                        <a href="" class="link_search link_idSearch">ID 찾기</a>
+                        <a href="" class="link_search link_passwordSearch">Password 찾기</a>
+                    </div>
+                </div>
+            </form>
+            <div class="box_alert"><!-- active 클래스 추가시 display:block -->
+                <div class="head_alert">
+                    <strong>알림</strong>
+                </div>
+                <div class="body_alert">
+                    <p>비밀번호 5회 입력 오류로 접속이 차단되었습니다.</p>
+                    <p>비밀번호 재 설정 또는 관리자에게 문의해 주세요.</p>
+                </div>
+                <button type="button" class="btn_full btn_enter">확인</button>
+                <button type="button" class="btn_close"><span class="ico_admin icon-ico-close">닫기</span></button>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="inner_footer">
+            <h2><a href="#"><span class="ico_admin icon-ico-txt-logo">타이탄플랫폼</span></a></h2>
+            <ul>
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">사업제휴</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+            <address>Copyright titanplatform corp. All rights reserved</address>
+            <p class="txt_footer">본 시스템은 인가된 사용자만 접근 가능합니다.</p>
+        </div>
+    </footer>
+    <!-- 비밀번호 찾기팝업 시작 -->
+    <div class="area_popup fixed_popup pop_passwordSearch"><!-- active 클래스 추가시 display:block -->
+        <div class="inner_popup">
+            <div class="box_popup">
+                <form name="memberVO" id="admin_findPwdForm" method="post" onsubmit="return false;">
+                    <div class="head_popup">
+                        <strong>비밀번호 찾기</strong>
+                    </div>
+                    <div class="body_popup">
+                        <div class="row_box">
+                            <div class="box_series">
+                                <label >ID</label>
+                                <div class="inner_series">
+                                    <input type="text" name="loginId" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row_box">
+                            <div class="third_series">
+                                <input type="hidden" name="cellPhoneNum" value="">
+                                <label >휴대폰</label>
+                                <div class="box_select">
+                                    <label  class="screen_out">휴대폰 맨 앞자리</label>
+                                    <div class="inner_select">
+                                        <select name="cellPhoneNum1">
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="019">019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="box_series">
+                                    <label  class="screen_out">휴대폰 중간 4자리</label>
+                                    <div class="inner_series">
+                                        <input type="number" name="cellPhoneNum2" value="">
+                                    </div>
+                                </div>
+                                <div class="box_series">
+                                    <label  class="screen_out">휴대폰 끝 4자리</label>
+                                    <div class="inner_series">
+                                        <input type="number" name="cellPhoneNum3" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_box">
+                            <ul>
+                                <li>입력하신 휴대폰번호로 임시비밀번호를 보내드립니다.</li>
+                                <li>통신사 사정에 따라 SMS전송에 다소 시간이 걸릴 수 있습니다.</li>
+                                <li>임시비밀번호가 발송되지 않을 경우 관리자에게 문의 부탁드립니다.</li>
+                            </ul>
+                            <p class="txt_etc">※ 관리자 전화번호</p>
+                        </div>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <button type="button" class="btn_line btn_cancel">취소</button>
+                            <button type="button" class="btn_full btn_enter" id="btn-findPwd">확인</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn_close"><span class="ico_admin icon-ico-close">닫기</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 비밀번호 찾기팝업 끝 -->
+    <!-- 아이디 찾기팝업 시작 -->
+    <div class="area_popup fixed_popup pop_idSearch"><!-- active 클래스 추가시 display:block -->
+        <div class="inner_popup">
+            <div class="box_popup">
+                <form name="memberVO" id="admin_findIdForm" method="post" onsubmit="return false;">
+                    <div class="head_popup">
+                        <strong>아이디 찾기</strong>
+                    </div>
+                    <div class="body_popup">
+                        <div class="row_box">
+                            <div class="box_series">
+                                <label >이름</label>
+                                <div class="inner_series">
+                                    <input type="text" name="userNm" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row_box">
+                            <div class="third_series">
+                                <input type="hidden" name="cellPhoneNum" value="">
+                                <label >휴대폰</label>
+                                <div class="box_select">
+                                    <label  class="screen_out">휴대폰 맨 앞자리</label>
+                                    <div class="inner_select">
+                                        <select name="cellPhoneNum1">
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="019">019</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="box_series">
+                                    <label  class="screen_out">휴대폰 중간 4자리</label>
+                                    <div class="inner_series">
+                                        <input type="number" name="cellPhoneNum2" value="">
+                                    </div>
+                                </div>
+                                <div class="box_series">
+                                    <label  class="screen_out">휴대폰 끝 4자리</label>
+                                    <div class="inner_series">
+                                        <input type="number" name="cellPhoneNum3" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_box">
+                            <ul>
+                                <li>입력하신 휴대폰번호로 임시비밀번호를 보내드립니다.</li>
+                                <li>통신사 사정에 따라 SMS전송에 다소 시간이 걸릴 수 있습니다.</li>
+                                <li>임시비밀번호가 발송되지 않을 경우 관리자에게 문의 부탁드립니다.</li>
+                            </ul>
+                            <p class="txt_etc">※ 관리자 전화번호</p>
+                        </div>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <button type="button" class="btn_line btn_cancel">취소</button>
+                            <button type="button" class="btn_full btn_enter" id="btn-findId">확인</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn_close"><span class="ico_admin icon-ico-close">닫기</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 아이디 찾기팝업 끝 -->
+    <!-- 비밀번호 변경 팝업 시작 -->
+    <div class="area_popup fixed_popup"><!-- active 클래스 추가시 display:block -->
+        <div class="inner_popup">
+            <div class="box_popup">
+                <form action="">
+                    <div class="head_popup">
+                        <strong>비밀번호 변경</strong>
+                    </div>
+                    <div class="body_popup">
+                        <div class="row_box">
+                            <div class="box_series">
+                                <label >비밀번호</label>
+                                <div class="inner_series">
+                                    <input type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row_box">
+                            <div class="box_series">
+                                <label >비밀번호 확인</label>
+                                <div class="inner_series">
+                                    <input type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info_box">
+                            <ul>
+                                <li>비밀번호는 영문, 숫자, 특수문자를 포함한 8~16자리 문자를 입력하여야 합니다.</li>
+                                <li>비밀번호가 변경되지 않을 경우 관리자에게 문의 부탁드립니다.</li>
+                            </ul>
+                            <p class="txt_etc">※ 관리자 전화번호</p>
+                        </div>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <button type="button" class="btn_line btn_cancel">취소</button>
+                            <button type="button" class="btn_full btn_enter">확인</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn_close"><span class="ico_admin icon-ico-close">닫기</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 비밀번호 변경 팝업 끝 -->
+    <!-- 팝업 및 알림창은 버튼을 누르면 active 클래스가 제거되도록 동작됩니다. -->
+</div>
+
+<script type="text/javascript" src="../../../js/login.js"></script>
+<!--<script>-->
+    <!--$("#btn-singup").click(function(){-->
+        <!--document.location.href="/login";-->
+    <!--});-->
+
+    <!--function login(){-->
+        <!--if(!$("#loginId").val()){-->
+            <!--alert("이메일을 입력해 주십시오!");-->
+            <!--$("#loginId").focus();-->
+
+        <!--}else if(!$("#userPwd").val()){-->
+            <!--alert("비밀번호를 입력해 주십시오!");-->
+            <!--$("#userPwd").focus();-->
+        <!--}else{-->
+            <!--if($("#chkSaveId").is(":checked")){-->
+                <!--$("input[name='saveId']").val("Y");-->
+            <!--}-->
+            <!--$.post("/api/v1/admin/login", $("#loginForm").serialize(), function(data){-->
+                <!--var code = data.resultCode;-->
+
+                <!--if(code=="10000"){-->
+                    <!--alert("회원정보가 존재하지 않습니다.");-->
+
+                <!--}else if(code == "10001"){-->
+                    <!--alert("비밀번호가 일치하지 않습니다!");-->
+
+                <!--}else if(code == "10002"){-->
+                    <!--alert("탈퇴한 회원입니다.");-->
+
+                <!--}else if(code == "10003"){-->
+                    <!--alert("계정이 블럭되었습니다.");-->
+
+                <!--}else if(code == "10004"){-->
+                    <!--alert("미인증된 계정입니다.");-->
+
+                <!--}else if(code == "00000"){-->
+                    <!--alert("로그인 되었습니다.");-->
+                    <!--document.location.href="/";-->
+                <!--}else{-->
+                    <!--alert("다시 시도해 주십시오.");-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--}-->
+
+    <!--$("#btn-findId").click(function(){-->
+        <!--if(!$("#admin_findIdForm input[name='userNm']").val()){-->
+            <!--alert("이름을 입력해주세요.");-->
+            <!--return false;-->
+            <!--$("#admin_findIdForm input[name='userNm']").focus();-->
+        <!--}else if($("#admin_findIdForm select[name='cellPhoneNum1']").val() =="" || $("#admin_findIdForm input[name='cellPhoneNum2']").val() =="" || $("#admin_findIdForm input[name='cellPhoneNum3']").val() ==""){-->
+            <!--alert("휴대폰번호를 입력해주세요.");-->
+            <!--return false;-->
+        <!--}else{-->
+            <!--$("#admin_findIdForm input[name='cellPhoneNum']").val($("#admin_findIdForm select[name='cellPhoneNum1']").val()+"-"+$("#admin_findIdForm input[name='cellPhoneNum2']").val()+"-"+$("#admin_findIdForm input[name='cellPhoneNum3']").val());-->
+            <!--$.post("/api/v1/admin/findIdPwd", $("#admin_findIdForm").serialize(), function(data){-->
+                <!--var code = data.resultCode;-->
+
+                <!--if(code=="10000"){-->
+                    <!--alert("회원정보가 존재하지 않습니다.");-->
+                <!--}else if(code == "00000"){-->
+                    <!--alert("휴대폰 번호로 ID가 발송되었습니다.");-->
+                    <!--document.location.href="/";-->
+                <!--}else{-->
+                    <!--alert("다시 시도해 주십시오.");-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+
+    <!--$("#btn-findPwd").click(function(){-->
+        <!--if($("#admin_findPwdForm input[name='loginId']").val() ==""){-->
+            <!--alert("아이디를 입력해주세요.");-->
+            <!--$("#admin_findPwdForm input[name='loginId']").focus();-->
+            <!--return false;-->
+        <!--}else if($("#admin_findPwdForm select[name='cellPhoneNum1']").val() =="" || $("#admin_findPwdForm input[name='cellPhoneNum2']").val() =="" || $("#admin_findPwdForm input[name='cellPhoneNum3']").val() ==""){-->
+            <!--alert("휴대폰번호를 입력해주세요.");-->
+            <!--return false;-->
+        <!--}-->
+        <!--else{-->
+            <!--$("#admin_findPwdForm input[name='cellPhoneNum']").val($("#admin_findPwdForm select[name='cellPhoneNum1']").val()+"-"+$("#admin_findPwdForm input[name='cellPhoneNum2']").val()+"-"+$("#admin_findPwdForm input[name='cellPhoneNum3']").val());-->
+            <!--$.post("/api/v1/admin/findIdPwd", $("#admin_findPwdForm").serialize(), function(data){-->
+                <!--var code = data.resultCode;-->
+                <!--if(code=="10000"){-->
+                    <!--alert("회원정보가 존재하지 않습니다.");-->
+                <!--}else if(code == "00000"){-->
+                    <!--alert("휴대폰 번호로 ID가 발송되었습니다.");-->
+                    <!--document.location.href="/";-->
+                <!--}else{-->
+                    <!--alert("다시 시도해 주십시오.");-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+    <!--function closeAlert(){-->
+        <!--$('.box_alert').hide();-->
+    <!--}-->
+
+    <!--function closePopup(){-->
+        <!--$(this).parents('.area_popup').removeClass('active');-->
+    <!--}-->
+
+    <!--function viewPopup(){-->
+        <!--var btnString ='';-->
+        <!--if($(this).hasClass('link_idSearch')){-->
+            <!--btnString = 'id';-->
+        <!--}else if($(this).hasClass('link_passwordSearch')){-->
+            <!--btnString = 'password';-->
+        <!--}-->
+        <!--$(".pop_"+btnString+"Search").addClass('active');-->
+        <!--return false;-->
+    <!--}-->
+    <!--$('.box_input .btn_close, .box_input .btn_enter').click(closeAlert);-->
+    <!--$('.btn_close, .btn_cancel').click(closePopup);-->
+    <!--$('.link_idSearch, .link_passwordSearch').click(viewPopup);-->
+
+<!--</script>-->
+</body>
+</html>

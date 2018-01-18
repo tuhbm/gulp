@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>사업자 등록 | Digital signage Admin</title>
+    <link rel="stylesheet" href="../../../css/user.css">
+</head>
+<body>
+<div id="adminIndex">
+    <a href="#adminBody">본문 바로가기</a>
+    <a href="#adminGnb">메뉴 바로가기</a>
+</div>
+<div id="wrap">
+    <header id="header">
+        <div class="inner_header">
+            <h1 class="tit_logo"><a href="../user/adminView.html"><span class="ico_admin icon-ico-logo">타이탄플랫폼</span></a></h1>
+            <nav class="area_nav">
+                <h2 id="adminGnb" class="screen_out">Admin 메인 메뉴</h2>
+                <ul class="list_nav">
+                    <li class="active"><a href="../user/adminView.html"><span class="ico_admin icon-ico-user"></span><span class="txt_nav">사용자 관리</span></a></li>
+                    <li><a href="../system/adminSetTop.html"><span class="ico_admin icon-ico-system"></span><span class="txt_nav">시스템 관리</span></a></li>
+                    <li><a href="../stats/adminSetTop.html"><span class="ico_admin icon-ico-graph"></span><span class="txt_nav">통계</span></a></li>
+                    <li><a href="../manage/noticeView.html"><span class="ico_admin icon-ico-manage"></span><span class="txt_nav">운영관리</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="container">
+        <div class="section_header">
+            <div class="inner_header">
+                <h2 class="tit_header">관리자계정 관리</h2>
+                <div class="area_user">
+                    <p class="txt_user">OOO님 환영합니다.(2017.08.29 14:00:32)</p>
+                    <a href="" class="link_setting">설정</a>
+                    <a href="" class="link_logout">로그아웃</a>
+                    <!-- <a href="" class="link_login">로그인</a> -->
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">컨텐츠 본문</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="" class="active">관리자 계정 관리</a></li>
+                            <li><a href="">사업자 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <article class="view_content view_register">
+                <form action="">
+                    <fieldset>
+                        <legend class="screen_out">사업자 등록</legend>
+                        <h3 class="tit_view"><span class="txt_title">사업자 정보</span></h3>
+                        <div class="area_regist area_buisnessman">
+                            <div class="box_series box_registId">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">사업자 명</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpId">사업자 명</label>
+                                    <input id="inpId" type="text" placeholder="등록할 아이디를 입력해주세요.">
+                                </div>
+                                <button type="button">중복확인</button>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">업태</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpPw">업태</label>
+                                    <input id="inpPw" type="text">
+                                </div>
+                            </div>
+                            <div class="box_select">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">사업자 유형</strong>
+                                </div>
+                                <label class="screen_out" for="inpBuisnessMan">사업자 유형</label>
+                                <div class="inner_select">
+                                    <select name="" id="inpBuisnessMan">
+                                        <option value="">선택</option>
+                                        <option value="">관리자</option>
+                                        <option value="">사업자</option>
+                                        <option value="">광고주</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">업종</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpName">업종</label>
+                                        <input id="inpName" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series box_buisnessNumber">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">사업자 번호</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpName">사업자 번호</label>
+                                        <input id="inpName" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">이메일</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpEmail">이메일</label>
+                                    <input id="inpEmail" type="password">
+                                </div>
+                            </div>
+                            <div class="box_series box_repName">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">대표자명</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpRep">대표자명</label>
+                                    <input id="inpRep" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">담당자 연락처</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpCall">담당자 연락처</label>
+                                        <input id="inpCall" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series third_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">대표전화번호</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpPhone">대표전화번호</label>
+                                    <input id="inpPhone" type="number" min="0" max="999" title="처음 3자리 번호">
+                                    <span class="txt_dash">-</span>
+                                    <input type="number" min="0" max="9999" title="중간 4자리 번호">
+                                    <span class="txt_dash">-</span>
+                                    <input type="number" min="0" max="9999" title="맨뒤 4자리 번호">
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist necessary">담당자명</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpManagerName">담당자명</label>
+                                        <input id="inpManagerName" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series box_address">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">주소</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpAddress">주소</label>
+                                        <input id="inpAddress" type="text">
+                                </div>
+                            </div>
+                            <div class="box_series chk_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">사용여부</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <label class="screen_out" for="inpUse">사용 여부</label>
+                                    <div class="inner_chkbox">
+                                        <input id="inpUse" class="ico_admin" type="radio" name="chkUse" title="사용" checked>
+                                        <span>사용</span>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="radio" class="ico_admin" name="chkUse" title="미사용">
+                                        <span>미사용</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="tit_view"><span class="txt_title">정보 설정</span></h3>
+                        <div class="area_checkbox">
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">국가</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="n_c1">
+                                        <label for="n_c1">글로벌</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="n_c2">
+                                        <label for="n_c2">대한민국</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="n_c3">
+                                        <label for="n_c3">북미</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="n_c4">
+                                        <label for="n_c4">중국</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="n_c5">
+                                        <label for="n_c5">일본</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">추천품목</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="r_c1">
+                                        <label for="r_c1">전체</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="r_c2">
+                                        <label for="r_c2">식품</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="r_c3">
+                                        <label for="r_c3">전자제품</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="r_c4">
+                                        <label for="r_c4">주류</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="r_c5">
+                                        <label for="r_c5">도서</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">금지품목</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c1">
+                                        <label for="e_c1">성인</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c2">
+                                        <label for="e_c2">주류</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c3">
+                                        <label for="e_c3">약물/담배</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c4">
+                                        <label for="e_c4">도박/복권</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c5">
+                                        <label for="e_c5">약품</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c6">
+                                        <label for="e_c6">보조식품</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c7">
+                                        <label for="e_c7">무기/폭약</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c8">
+                                        <label for="e_c8">쇼핑몰</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="e_c9">
+                                        <label for="e_c9">유사 서비스</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box_series">
+                                <div class="inner_title">
+                                    <strong class="tit_regist">연령</strong>
+                                </div>
+                                <div class="inner_series">
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="y_c1">
+                                        <label for="y_c1">전체</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="y_c2">
+                                        <label for="y_c2">성인</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="y_c3">
+                                        <label for="y_c3">청소년</label>
+                                    </div>
+                                    <div class="inner_chkbox">
+                                        <input type="checkbox" id="y_c4">
+                                        <label for="y_c4">유아</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area_btn">
+                            <div class="inner_btns">
+                                <button type="button" class="btn_line btn_cancel">취소</button>
+                                <button type="button" class="btn_full btn_enter">확인</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="inner_footer">
+            <h2><a href="#"><span class="ico_admin icon-ico-txt-logo">타이탄플랫폼</span></a></h2>
+            <ul>
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">사업제휴</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+            <address>Copyright titanplatform corp. All rights reserved</address>
+            <p class="txt_footer">본 시스템은 인가된 사용자만 접근 가능합니다.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

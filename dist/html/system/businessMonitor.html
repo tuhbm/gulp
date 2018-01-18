@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>시스템관리</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../img/favicon.png" />
+    <link rel="stylesheet" href="../../../../css/jquery-ui.css" />
+    <link rel="stylesheet" href="../../../../css/ico-sprite.min.css"/>
+    <script type="text/javascript" src="../../../../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../js/slick.js"></script>
+    <script type="text/javascript" src="../../../../js/jstree.js"></script>
+    <script type="text/javascript" src="../../../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../../../js/common.js"></script>
+    <link rel="stylesheet" href="../../../../css/system.css" />
+</head>
+<body>
+<div id="adminIndex">
+    <a href="#adminBody">본문 바로가기</a>
+    <a href="#adminGnb">메뉴 바로가기</a>
+</div>
+<div id="wrap">
+    <header id="header">
+        <div class="inner_header">
+            <h1 class="tit_logo"><a href="../user/adminView.html"><span class="ico_admin icon-ico-logo">타이탄플랫폼</span></a></h1>
+            <nav class="area_nav">
+                <h2 id="adminGnb" class="screen_out">Admin 메인 메뉴</h2>
+                <ul class="list_nav">
+                    <li class="active"><a href="../user/adminView.html"><span class="ico_admin icon-ico-user"></span><span class="txt_nav">사용자 관리</span></a></li>
+                    <li><a href="../system/adminSetTop.html"><span class="ico_admin icon-ico-system"></span><span class="txt_nav">시스템 관리</span></a></li>
+                    <li><a href="../stats/adminSetTop.html"><span class="ico_admin icon-ico-graph"></span><span class="txt_nav">통계</span></a></li>
+                    <li><a href="../manage/noticeView.html"><span class="ico_admin icon-ico-manage"></span><span class="txt_nav">운영관리</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="container">
+        <div class="section_header">
+            <div class="inner_header">
+                <h2 class="tit_header">시스템관리</h2>
+                <div class="area_user">
+                    <p class="txt_user">관리자님 환영합니다.(2017.08.29 14:00:32)</p>
+                    <a href="" class="link_setting">설정</a>
+                    <a href="javascript:logout();" class="link_logout">로그아웃</a>
+                    <!-- <a href="" class="link_login">로그인</a> -->
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">시스템 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li><a href="businessSetTop.html">셋톱 관리</a></li>
+                            <li class="active"><a href="businessMonitor.html">모니터링</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <!--본문 내용-->
+            <article class="view_content">
+                <fieldset>
+                    <legend class="screen_out">관리자 모니터링</legend>
+                    <h3 class="tit_view"><span class="txt_title">사업자 정보</span></h3>
+                    <div class="area_board needMargin_bottom">
+                        <table>
+                            <colgroup>
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col style="width:25%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>사업자</th>
+                                    <th>등록</th>
+                                    <th>연동</th>
+                                    <th>미연동</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>건강한 밥상</td>
+                                    <td>309,185</td>
+                                    <td>215,122</td>
+                                    <td>15,122</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="area_halfHusks">
+                        <div class="area_halfAndhalf">
+                            <div class="info_half">
+                                <h3 class="tit_view"><span class="txt_title">셋톱 등록 현황</span></h3>
+                                <div class="box_btns">
+                                    <button class="btn_line active ">주</button>
+                                    <button class="btn_line">월</button>
+                                    <button class="btn_line">년</button>
+                                </div>
+                            </div>
+                            <div class="area_board box_board">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">오늘</th>
+                                            <th scope="col">전일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">등록</td>
+                                            <td>14,154</td>
+                                            <td>10,375</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">연동</td>
+                                            <td>14,000</td>
+                                            <td>10,112</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">미연동</td>
+                                            <td>154</td>
+                                            <td>263</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="box_graph">
+                                    <div class="inner_graph">
+                                        <div class="graph_rod">
+                                            <div class="inner_rod">
+                                                <div class="rod_active" style="width:70%;">활성화</div>
+                                            </div>
+                                            <div class="inner_txt">
+                                                <div class="txt_left">
+                                                    <strong>연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 82% )</em></span>
+                                                </div>
+                                                <div class="txt_right">
+                                                    <strong>미연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 18% )</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="area_graph">
+                                <div class="box_graph jqplot_graph">
+                                    <div class="info_graph">
+                                        <ul>
+                                            <li><i class="ico_admin icon-line01"></i><span>등록</span></li>
+                                            <li><i class="ico_admin icon-line02"></i><span>연동</span></li>
+                                            <li><i class="ico_admin icon-line03"></i><span>미연동</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inner_graph">
+                                        <div id="chart1" style="width:680px;height:250px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area_halfAndhalf">
+                            <div class="info_half">
+                                <h3 class="tit_view"><span class="txt_title">셋톱 가동율</span></h3>
+                                <div class="box_btns">
+                                    <button class="btn_line active">주</button>
+                                    <button class="btn_line">월</button>
+                                    <button class="btn_line">년</button>
+                                </div>
+                            </div>
+                            <div class="area_board box_board">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:33.33%">
+                                        <col style="width:33.33%">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">오늘</th>
+                                            <th scope="col">전일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">등록</td>
+                                            <td>14,154</td>
+                                            <td>10,375</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">정상</td>
+                                            <td>14,000</td>
+                                            <td>10,112</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">비정상</td>
+                                            <td>154</td>
+                                            <td>263</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="box_graph">
+                                    <div class="inner_graph">
+                                        <div class="graph_rod">
+                                            <div class="inner_rod">
+                                                <div class="rod_active" style="width:70%;">활성화</div>
+                                            </div>
+                                            <div class="inner_txt">
+                                                <div class="txt_left">
+                                                    <strong>연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 82% )</em></span>
+                                                </div>
+                                                <div class="txt_right">
+                                                    <strong>미연동</strong><span class="txt_dClone">:</span><span>14,154 <em>( 18% )</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="area_graph">
+                                <div class="box_graph jqplot_graph">
+                                    <div class="info_graph">
+                                        <ul>
+                                            <li><i class="ico_admin icon-line01"></i><span>등록</span></li>
+                                            <li><i class="ico_admin icon-line02"></i><span>연동</span></li>
+                                            <li><i class="ico_admin icon-line03"></i><span>미연동</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inner_graph">
+                                        <div id="chart1" style="width:580px;height:250px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="tit_view"><span class="txt_title">기간별 셋톱 상세현황</span></h3>
+                    <div class="area_search">
+                        <div class="box_term need_txtBar">
+                            <label for="">조회기간</label>
+                            <div class="inner_calendar">
+                                <input type="text" id="scheduleStartDate">
+                            </div>
+                            <span class="txt_wave">~</span>
+                            <div class="inner_calendar">
+                                <input type="text" id="scheduleEndDate">
+                            </div>
+                        </div>
+                        <div class="box_series chk_series">
+                            <div class="inner_title">
+                                <strong class="tit_regist">조회 단위</strong>
+                            </div>
+                            <div class="inner_series">
+                                <label class="screen_out" for="inpTerm">조회 단위</label>
+                                <div class="inner_chkbox">
+                                    <input id="inpTerm" class="ico_admin icon-ico-chk" type="radio" name="chkUse" title="사용" checked="">
+                                    <span>사용</span>
+                                </div>
+                                <div class="inner_chkbox">
+                                    <input type="radio" class="ico_admin icon-ico-chk" name="chkUse" title="미사용">
+                                    <span>미사용</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn_excel">excel 다운로드</button>
+                    </div>
+                    <div class="area_board">
+                        <table>
+                            <colgroup>
+                                <col style="width:3%">
+                                <col>
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                                <col style="width:7%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th rowspan="2">No.</th>
+                                <th rowspan="2" class="boundary">기간</th>
+                                <th colspan="3" class="boundary">셋톱 사용현황</th>
+                                <th colspan="3" class="boundary">셋톱 가동율</th>
+                                <th colspan="3">셋톱 운영 현황</th>
+                            </tr>
+                            <tr>
+                                <th>전체</th>
+                                <th>유효</th>
+                                <th class="boundary">무효</th>
+                                <th>전체</th>
+                                <th>유효</th>
+                                <th class="boundary">무효</th>
+                                <th>전체</th>
+                                <th>유효</th>
+                                <th>무효</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>10</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="boundary">2017.09.30</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td class="boundary">301</td>
+                                <td>1,124</td>
+                                <td>865</td>
+                                <td>301</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="box_paginate">
+                            <div class="paginate">
+                                <a class="direction" href=""><span class="txt_direction">이전</span><span class="ico_admin icon-ico-prev"></span></a>
+                                <strong>1</strong>
+                                <a href="">2</a>
+                                <a href="">3</a>
+                                <a href="">4</a>
+                                <a href="">5</a>
+                                <a href="">6</a>
+                                <a href="">7</a>
+                                <a href="">8</a>
+                                <a href="">9</a>
+                                <a href="">10</a>
+                                <a class="direction" href=""><span class="txt_direction">다음</span><span class="ico_admin icon-ico-next"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <footer id="footer">
+        <div class="inner_footer">
+            <h2><a href="#"><span class="ico_admin icon-ico-txt-logo">타이탄플랫폼</span></a></h2>
+            <ul>
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">사업제휴</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+            <address>Copyright titanplatform corp. All rights reserved</address>
+            <p class="txt_footer">본 시스템은 인가된 사용자만 접근 가능합니다.</p>
+        </div>
+    </footer>
+</div><!-- e ::  wrap-->
+<script type="text/javascript" src="../../../../js/lib/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../../../js/lib/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="../../../../js/lib/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<script>
+function useDatepicker(obj){
+    obj.datepicker({
+        showOn: "both",
+        dateFormat:'yy-mm-dd',
+        buttonText: '<span class="ico_admin icon-ico-calender">달력</span>'
+    });
+}
+
+function moveActive(obj){
+    obj.click(function(){
+        var parent = $(this).parents(".box_btns");
+        parent.find(".btn_line").removeClass("active");
+        $(this).addClass("active");
+    });
+}
+
+$(document).ready(function(){
+    useDatepicker($('#scheduleStartDate'));
+    useDatepicker($('#scheduleEndDate'));
+    moveActive($('.info_half .btn_line'));
+    var line1 = [[11.23, 2000],[11.24, 700],[11.25, 1000],[11.26, 7000],[11.27, 6000]];
+    var line2 = [[11.23, 3000],[11.24, 1200],[11.25, 1500],[11.26, 4000],[11.27, 5500]];
+    var line3 = [[11.23, 4800],[11.24, 1700],[11.25, 2700],[11.26, 4900],[11.27, 4200]];
+    var plot3 = $.jqplot('chart1', [line1, line2, line3],{
+            title:{
+                text:'Line Style Options',
+                show:false
+            },
+            seriesDefaults: {
+                rendererOptions:{
+                    fillToZero: true
+                }
+            },
+            grid:{
+                drawGridLines: false,
+                gridLineColor:'#ececec',
+                background:'#fff',
+                drawBorder: false,
+                drawMajorGridlines: false,
+                shadow: false,
+                borderColor:'#fff'
+            },
+            gridPadding: { top: 1 , bottom: null, left: null, right: null },
+            drawMajorGridlines:false,
+            axes:{
+                xaxis:{
+                    ticks:[11.22,11.23,11.24,11.25,11.26,11.27,11.28],
+                    tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                    tickOptions:{
+                        numberTicks:7,
+                        showGridline:false,
+                        markSize:10,
+                        formatString:'%.4P',
+                        fontSize:'12px'
+                    }
+                },
+                yaxis:{
+                    pad:1,
+                    tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                    tickOptions:{
+                        numberTicks:5
+                    }
+                }
+            },
+            series:[
+                {
+                    lineWidth:2,
+                    shadow:false,
+                    markerOptions: { style:'filledCircle',size:8,shadow:false,color:'#006bff' },color:'#b7d6ff',
+                    breakOnNull : true,
+                    disableStack:true
+                },
+                {
+                    lineWidth:2,
+                    shadow:false,
+                    markerOptions: { style:"filledCircle",size:8,shadow:false,color:'#999',xoffset:2 },color:'#dcdcdc',
+                    breakOnNull : true,
+                    disableStack:true
+                },
+                {
+                    lineWidth:2,
+                    shadow:false,
+                    markerOptions: { style:"filledCircle",size:8,shadow:false,color:'#ff0000' },color:'#ffd5d5',
+                    breakOnNull : true,
+                    disableStack:true
+                }
+            ]
+        }
+    );
+});
+</script>
+</body>
+</html>

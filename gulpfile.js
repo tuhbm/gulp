@@ -10,14 +10,12 @@ var gulp = require('gulp'),
     include = require('gulp-html-tag-include'),
     autoprefixer= require('gulp-autoprefixer'),
     csslint = require('gulp-csslint'),
-    concatcss = require('gulp-concat-css'),
     uglifycss = require('gulp-uglifycss'),
     rename = require('gulp-rename'),
-    jshint = require('gulp-jshint'),
+    // jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    importCss = require('gulp-import-css'),
-    SourceMapSupport = require('gulp-sourcemaps-support');
+    importCss = require('gulp-import-css');
 
 var source = 'src/';
 var develop = 'dist/';
@@ -121,6 +119,7 @@ gulp.task('styles', function(){
   .pipe(importCss())
   .pipe(autoprefixer())
   .pipe(gulp.dest(config.path.sass.dist))
+  .pipe(csslint())
   .pipe(uglifycss())
   .pipe(rename({suffix:'.min'}))
   .pipe(gulp.dest(config.path.sass.dist))
@@ -164,13 +163,13 @@ gulp.task('sprite', function(){
   return merge(imgStream, cssStream);
 });
 
-gulp.task('scripts',['js:hint','js:concat','js:uglify']);
+gulp.task('scripts',['js:concat','js:uglify']);
 
-gulp.task('js:hint',function(){
-    gulp.src(path.js.src)
-        .pipe(jshint())             //javascript 파일을 검사
-        .pipe(jshint.reporter('jshint-stylish'))
-});
+// gulp.task('js:hint',function(){
+//     gulp.src(path.js.src)
+//         .pipe(jshint())             //javascript 파일을 검사
+//         .pipe(jshint.reporter('jshint-stylish'))
+// });
 gulp.task('js:concat',function(){
     gulp.src(path.js.src)
         .pipe(concat(path.js.filename))  //javascript 파일을 병합

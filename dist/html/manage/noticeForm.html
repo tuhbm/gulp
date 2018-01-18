@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>운영 관리</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../img/favicon.png" />
+    <link rel="stylesheet" href="../../../../css/jquery-ui.css" />
+    <link rel="stylesheet" href="../../../../css/ico-sprite.min.css"/>
+    <script type="text/javascript" src="../../../../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../js/slick.js"></script>
+    <script type="text/javascript" src="../../../../js/jstree.js"></script>
+    <script type="text/javascript" src="../../../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../../../js/common.js"></script>
+    <link rel="stylesheet" href="../../../../css/manage.css" />
+</head>
+<body>
+<div id="adminIndex">
+    <a href="#adminBody">본문 바로가기</a>
+    <a href="#adminGnb">메뉴 바로가기</a>
+</div>
+<div id="wrap">
+    <header id="header">
+        <div class="inner_header">
+            <h1 class="tit_logo"><a href="../user/adminView.html"><span class="ico_admin icon-ico-logo">타이탄플랫폼</span></a></h1>
+            <nav class="area_nav">
+                <h2 id="adminGnb" class="screen_out">Admin 메인 메뉴</h2>
+                <ul class="list_nav">
+                    <li class="active"><a href="../user/adminView.html"><span class="ico_admin icon-ico-user"></span><span class="txt_nav">사용자 관리</span></a></li>
+                    <li><a href="../system/adminSetTop.html"><span class="ico_admin icon-ico-system"></span><span class="txt_nav">시스템 관리</span></a></li>
+                    <li><a href="../stats/adminSetTop.html"><span class="ico_admin icon-ico-graph"></span><span class="txt_nav">통계</span></a></li>
+                    <li><a href="../manage/noticeView.html"><span class="ico_admin icon-ico-manage"></span><span class="txt_nav">운영관리</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="container">
+        <div class="section_header">
+            <div class="inner_header">
+                <h2 class="tit_header">운영 관리</h2>
+                <div class="area_user">
+                    <p class="txt_user">관리자님 환영합니다.(2017.08.29 14:00:32)</p>
+                    <a href="" class="link_setting">설정</a>
+                    <a href="javascript:logout();" class="link_logout">로그아웃</a>
+                    <!-- <a href="" class="link_login">로그인</a> -->
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <h2 id="adminBody" class="screen_out">운영 관리</h2>
+            <aside class="side_nav">
+                <nav>
+                    <div class="inner_nav">
+                        <ul>
+                            <li  class="active"><a href="noticeView.html">공지사항 관리</a></li>
+                            <li ><a href="faqView.html">FAQ 관리</a></li>
+                            <li ><a href="distributionView.html">배포 관리</a></li>
+                            <li ><a href="downloadView.html">다운로드 관리</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <!--본문 내용-->
+            <article class="view_content view_register">
+                <fieldset>
+                    <legend class="screen_out">공지사항 등록</legend>
+                    <h3 class="tit_view"><span class="txt_title">공지사항 등록</span></h3>
+                    <div class="area_manager">
+                        <form id="insertUserForm" name="userVO" method="post" onsubmit="return false;">
+                            <input type="hidden" id="notifyMatterId" name="notifyMatterId" value="" >
+                            <div class="half_form left_form">
+                                <div class="box_series box_registId">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">제목</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="notifyTit">제목</label>
+                                        <input id="notifyTit" type="text" name="notifyTit" placeholder="최대 50자까지 입력 가능" value="" >
+                                    </div>
+                                </div>
+                                <div class="box_series box_term">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">게시기간</strong>
+                                    </div>
+                                    <div class="inner_calendar">
+                                        <input type="text" id="bulletinStartDate" name="bulletinStartDate" value="">
+                                    </div>
+                                    <span class="txt_wave">~</span>
+                                    <div class="inner_calendar">
+
+                                        <input type="text" id="bulletinEndDate" name="bulletinEndDate" value="">
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">공지대상</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpWho">공지대상</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpWho" class="ico_admin icon-ico-chk" type="radio" name="notifyTargetCd" title="전체" value="all" checked   >
+                                            <span>전체</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="notifyTargetCd" title="관리자" value="admin" >
+                                            <span>관리자</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="notifyTargetCd" title="사업자" value="place" >
+                                            <span>사업자</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">메인공지</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpMainUse">메인공지</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpMainUse" class="ico_admin icon-ico-chk" type="radio" name="mainNotifyYn" title="사용" value="Y"  checked>
+                                            <span>사용</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="mainNotifyYn" title="미사용" value="N" >
+                                            <span>미사용</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box_series chk_series">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist necessary">사용여부</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="inpUse">사용여부</label>
+                                        <div class="inner_chkbox">
+                                            <input id="inpUse" class="ico_admin icon-ico-chk" type="radio" name="useYn" title="link" value="Y" checked>
+                                            <span>사용</span>
+                                        </div>
+                                        <div class="inner_chkbox">
+                                            <input type="radio" class="ico_admin icon-ico-chk" name="useYn" title="down" value="N" >
+                                            <span>미사용</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="half_form right_form">
+                                <div class="box_series box_textarea">
+                                    <div class="inner_title">
+                                        <strong class="tit_regist">내용</strong>
+                                    </div>
+                                    <div class="inner_series">
+                                        <label class="screen_out" for="notifyTxt">내용</label>
+                                        <textarea id="notifyTxt" name="notifyTxt" cols="30" rows="10"> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="area_btn">
+                        <div class="inner_btns">
+                            <a href="/manage/notice/" class="btn_line btn_cancel">취소</a>
+                            <button type="submit" class="btn_full btn_enter" onclick="insertNotice();">확인</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </article>
+        </section>
+    </main><!-- e :: main container -->
+    <footer id="footer">
+        <div class="inner_footer">
+            <h2><a href="#"><span class="ico_admin icon-ico-txt-logo">타이탄플랫폼</span></a></h2>
+            <ul>
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">사업제휴</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+            <address>Copyright titanplatform corp. All rights reserved</address>
+            <p class="txt_footer">본 시스템은 인가된 사용자만 접근 가능합니다.</p>
+        </div>
+    </footer>
+</div><!-- e ::  wrap-->
+<script type="text/javascript" src="../../../../js/manage/notice.js"></script>
+<script>
+    function useDatepicker(obj){
+        obj.datepicker({
+            showOn: "both",
+            dateFormat:'yy-mm-dd',
+            buttonText: '<span class="ico_admin icon-ico-calender">달력</span>'
+        });
+    }
+
+    function moveActive(obj){
+        obj.click(function(){
+            obj.removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+    }
+
+    $(document).ready(function(){
+        useDatepicker($('#bulletinStartDate'));
+        useDatepicker($('#bulletinEndDate'));
+        moveActive($('.box_term .btn_line'));
+    });
+</script>
+</body>
+</html>
