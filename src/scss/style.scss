@@ -1,6 +1,13 @@
+.ico_engdangi{
+    background-image: url(../img/ico_sprite.png);
+    background-repeat: no-repeat;
+}
+
+
 body{
     margin:0;
     padding:0;
+    font-size:2em;
     
     h1,h2,h3,h4,h5,h6{
         margin:0;
@@ -21,7 +28,7 @@ body{
     
     #header{
         overflow:hidden;
-        position:relative
+        position:relative;
         
         .tit_logo{
             float:left;

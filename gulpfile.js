@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
+    replace = require('gulp-replace'),
     minify = require('gulp-minify'),
     sassLint = require('gulp-sass-lint');
 
@@ -76,6 +77,9 @@ gulp.task('sass', function(){
        .pipe(sass(scssOptions).on('error', sass.logError))
        .pipe(postcss(autoprefixer))
        .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+       .pipe(gulp.dest('./dist/css'))
+       .pipe(csso())
+       .pipe(uglifycss())
        .pipe(rename({suffix:'.min'}))
        .pipe(sourcemaps.write())
        .pipe(gulp.dest('./dist/css'))
@@ -88,10 +92,9 @@ gulp.task('html-include', function(){
 });
 
 gulp.task('sprite', function(){
-    var spriteData = gulp.src('./src/img/*.png')
+    var spriteData = gulp.src('src/img/**/*.png')
         .pipe(spritesmith({
             imgName: 'ico-sprite.png',
-            imgPath: '../img/ico-sprite.png',
             padding:10,
             algorithm: 'binary-tree',
             cssFormat: 'css',
@@ -99,14 +102,15 @@ gulp.task('sprite', function(){
         }));
 
     // Pipe image stream through image optimizer and onto disk
+    // // DEV: We must buffer our stream into a Buffer for `imagemin`
     var imgStream = spriteData.img
-    // DEV: We must buffer our stream into a Buffer for `imagemin`
         .pipe(buffer())
-        .pipe(imagemin())
+        // .pipe(imagemin())
         .pipe(gulp.dest('./dist/img'));
 
     // Pipe CSS stream through CSS optimizer and onto disk
     var cssStream = spriteData.css
+        .pipe(replace(/^\.icon-/gm, '.'))
         .pipe(sourcemaps.init())
         .pipe(csso())
         .pipe(uglifycss())
@@ -115,7 +119,7 @@ gulp.task('sprite', function(){
         .pipe(gulp.dest('./dist/css'));
 
     // Return a merged stream to handle both `end` events
-    return merge(imgStream, cssStream);
+    return merge(imgStream, cssStream);//, imgStream
 });
 
 
@@ -145,4 +149,4 @@ gulp.task('watch',function(){
     gulp.watch('./src/html/**/*.html', ['html-include']);
     gulp.watch('./src/img/*.png', ['sprite']);
 });
-gulp.task('default',['watch','sprite','scripts', 'sass', 'html-include']);
+gulp.task('default',['watch','sass', 'sprite','scripts','html-include']);
